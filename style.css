@@ -69,11 +69,11 @@ main{
 }
 .artistas{
     display:flex;
-    justify-content: space-around;
     flex-direction: row;
     align-items: center;
     padding: 10px;
     overflow-x: scroll;
+    gap: 10px;
 }
 .artista:hover, .album:hover, .dificuldade:hover, .on{
     background-color: rgba(255, 255, 255, 0.082);

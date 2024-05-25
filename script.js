@@ -430,7 +430,8 @@ function play(){
 var artistas = [
     new Artista("Taylor Swift"),
     new Artista("Jão"),
-    new Artista("Cavetown")
+    new Artista("Cavetown"),
+    new Artista("Ariana Grande")
 ];
 var albuns = [
     new Album("Taylor Swift","Taylor Swift",["Tim McGraw","Picture To Burn","Teardrops On My Guitar","A Place In This World","Cold As You","The Outside","Tied Together With A Smile","Stay Beautiful","Should've Said No","Mary's Song (Oh My, My, My)","Our Song","I'm Only Me When I'm With You","Invisible","A Perfectly Good Heart"]),
@@ -452,7 +453,14 @@ var albuns = [
     new Album("16 / 04 / 16","Cavetown",["Night Knuckles","BG Noise","Psychometry","So Much","Calpol","Snake and the Prairie dogs","16 / 04 / 16 (Jack's Song)","Irrational","Nostalgia in my BedRoom","LavalceRink","Trenchh","Sliiping Lately"]),
     new Album("Lemon Boy","Cavetown",["Lemon Boy","Green","It's U","Fool","Another One of Those Days","Taking Care of Things","Big Bowl in the Sky","888","Poison","10 Feet All","I'll Make Cereal","Pigeon"]),
     new Album("Sleepyhead","Cavetown",["Sweet Tooth","For You","Telescope","Feb 14","Pyjama Pants","Trying","Things That Make It Warm","Snail","Wishing Well","I Miss My Mum","Empty Bed"]),
-    new Album("worm food","Cavetown",["worm food","kill u","frog","a kind thing to do","1994","better","wasabi","fall in love with a girl","grey space","heart attack","i swear to god","juno","laundry day"])
+    new Album("worm food","Cavetown",["worm food","kill u","frog","a kind thing to do","1994","better","wasabi","fall in love with a girl","grey space","heart attack","i swear to god","juno","laundry day"]),
+    new Album("Yours Truly","Ariana Grande",["Honeymoon Avenue","Baby I","Right There","Tatooed Heart","Lovin' It","Piano","Daydreamin'","The Way","You'll Never Know","Almost Is Never Enough","Popular Song","Better Left Unsaid"]),
+    new Album("My Everything","Ariana Grande",["Intro","Problem","One Last Time","Why Try","Break Free","Best Mistake","Be My Baby","Break Your Heart Right Back","Love Me Harder","Just A Little Bit Of Your Heart","Hands On Me","My Everything","Bang Bang","Only 1","You Don't Know Me"]),
+    new Album("Dangerous Woman","Ariana Grande",["Moonlight","Dangerous Woman","Be Alright","Into You","Side To Side","Let Me Love You","Greedy","Leave Me Lonely","Everyday","Sometimes","I Don't Care","Bad Decisions","Touch It","Knew Better / Forever Boy","Thinking Bout You","Step On Up","Jason's Song (Gave It Away)"]),
+    new Album("Sweetener","Ariana Grande",["raindrops (an angel cried)","blazed","the light is coming","R.E.M","God is a woman","sweetener","succesful","everytime","breathin","no tears left to cry","borderline","better off","goodnight n go","pete davidson","get well soon"]),
+    new Album("thank u, next","Ariana Grande",["imagine","needy","NASA","bloodline","fake smile","bad idea","make up","ghostin","in my head","7 rings","thank u, next","break up with your girlfriend, i'm bored"]),
+    new Album("Positions","Ariana Grande",["shut up","34+35","motive","just like magic","off the table","six thirty","safety net","my hair","nasty","west side","love language","positions","obvious","pov"]),
+    new Album("Eternal Sunshine","Ariana Grande",["intro (end of the world)","bye","don't wanna break up again","Saturn Returns Interlude","eternal sunshine","supernatural","true story","the boy is mine","yes, and?","we can't be friends (wait for your love)","i wish i hated you","imperfect for you","ordinary things"])
 ];
 var dificuldades = [
     new Dificuldade("Fácil",false), 
