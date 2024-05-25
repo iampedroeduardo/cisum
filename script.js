@@ -297,7 +297,8 @@ function finish(){
     document.querySelector(".input").style = "background-color:rgba(0,0,0,0);color:#81b71a;";
     document.querySelectorAll(".pausar")[0].innerHTML = "Acabou!";
     document.querySelectorAll(".pausar")[1].innerHTML = "Acabou!";
-    document.querySelector(".pausar").setAttribute("onclick","");
+    document.querySelectorAll(".pausar")[0].setAttribute("onclick","");
+    document.querySelectorAll(".pausar")[1].setAttribute("onclick","");
     document.querySelector(".contador").style.color = "#81b71a";
     if(songsok == songson){
         var msg = "Parabéns! Você conseguiu lembrar de todas!"
