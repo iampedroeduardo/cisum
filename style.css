@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Sofia Sans Condensed;
+    color: white;
+    border: 0;
+}
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+*::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+}
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.082);
+    border-radius: 10px;
+}
+p {
+    -webkit-touch-callout: none;  /* iPhone OS, Safari */
+    -webkit-user-select: none;    /* Chrome, Safari 3 */
+    -khtml-user-select: none;     /* Safari 2 */
+    -moz-user-select: none;       /* Firefox */
+    -ms-user-select: none;        /* IE10+ */
+    user-select: none;            /* Possível implementação no futuro */
+    /* cursor: default; */
+}
+body{
+    background-color: black;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    gap: 10px;
+    overflow: scroll;
+    margin: 10px;
+}
+.menu{
+    width: 600px;
+    height: 450px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.082);
+    padding: 20px;
+}
+.titulo{
+    font-size: 35px;
+}
+.nome{
+    font-size: 20px;
+}
+.artista img{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+}
+.artista{ 
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    width: 170px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.artistas{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    overflow-x: scroll;
+}
+.artista:hover, .album:hover, .dificuldade:hover, .on{
+    background-color: rgba(255, 255, 255, 0.082);
+    cursor: pointer;
+}
+.album img{
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+}
+.album{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    height: 40px;
+    gap: 5px;
+}
+.album .nome{
+    text-wrap: nowrap;
+}
+.albuns{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    overflow-x: scroll;
+    padding: 10px;
+}
+.dificuldade{ 
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    width: 170px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.dificuldades{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.botaojogar{
+    color: black;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 20px;
+    background-color: #81b71a;
+    cursor: pointer;
+}
+.jogar{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.janela{
+    position: absolute;
+    width: 30vw;
+    height: 30vh;
+    top: 35vh;
+    left: 35vw;
+    background-color: rgb(43, 43, 43);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border-radius: 10px;
+}
+.jogo{
+    width: 800px;
+    height: 600px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.082);
+    padding: 20px;
+    overflow: scroll;
+}
+.controle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.input{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 25px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.082);
+    width: 300px;
+}
+.input:focus{
+    box-shadow: 0 0 0 0;
+    border: 1px solid #81b71a;
+    outline: 0;
+}
+.pausar{
+    color: black;
+    width: 120px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 20px;
+    background-color: #81b71a;
+    cursor: pointer;
+}
+.contador, .pontuacao{
+    font-size: 40px;
+}
+.tabelas{
+    display: flex;
+    overflow-x: scroll;
+    padding-top: 10px;
+    gap: 10px;
+}
+.td{
+    text-wrap: nowrap;
+    padding: 5px;
+    text-align: center;
+    height: 20px;
+    border-radius: 7px;
+    margin-top:5px;
+}
+.td p{
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+.td{
+    background-color: rgba(255, 255, 255, 0.082);
+}
+.th{
+    background-color: #81b71a;
+}
+.th p{
+    color: black;
+}
+.finish{
+    width: 40vw;
+    height: 40vh;
+    background-color: rgb(43, 43, 43);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border-radius: 10px;
+    gap: 80px;
+}
+.finish button{
+    color: black;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 20px;
+    background-color: #81b71a;
+    cursor: pointer;
+}
