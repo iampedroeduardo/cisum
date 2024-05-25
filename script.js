@@ -1,7 +1,7 @@
 class Song{
     constructor(nome){
         this.nome = nome;
-        this.simpleName = simplificaNome(nome,true)
+        this.simpleName = simplificaNome(nome,true);
         this.sigla = sigla(simplificaNome(nome,false));
         this.on = false;
     }
@@ -118,6 +118,9 @@ class Artista{
         for(var album of albuns){
             if(album.artista == this.nome){
                 album.on = this.on;
+                for(var song of album.songs){
+                    song.on = false;
+                }
             }
         }
     }
@@ -330,7 +333,7 @@ function testa(){
     for(var album of albuns){
         if(album.on){
             for(song of album.songs){
-                if(song.simpleName == simplificaNome(input.value,true) || (!dificuldades[2].on && song.sigla == simplificaNome(input.value,true))){
+                if((song.simpleName == simplificaNome(input.value,true) || (!dificuldades[2].on && song.sigla == simplificaNome(input.value,true))) && !song.on){
                     song.ativa("white");
                     songsok++;
                     pontuacao();
