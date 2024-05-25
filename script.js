@@ -172,7 +172,7 @@ function ativaDificuldade(nome){
     }
 }
 function simplificaNome(nome,espaco){
-    var nome = nome.toLowerCase().replaceAll(".", "").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a").replaceAll("/","");
+    var nome = nome.toLowerCase().replaceAll(".", "").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a").replaceAll("/","").replaceAll("é","e");
     if(espaco){
         nome = nome.replaceAll(" ", "");
     }
@@ -431,7 +431,8 @@ var artistas = [
     new Artista("Taylor Swift"),
     new Artista("Jão"),
     new Artista("Cavetown"),
-    new Artista("Ariana Grande")
+    new Artista("Ariana Grande"),
+    new Artista("Reneé Rapp")
 ];
 var albuns = [
     new Album("Taylor Swift","Taylor Swift",["Tim McGraw","Picture To Burn","Teardrops On My Guitar","A Place In This World","Cold As You","The Outside","Tied Together With A Smile","Stay Beautiful","Should've Said No","Mary's Song (Oh My, My, My)","Our Song","I'm Only Me When I'm With You","Invisible","A Perfectly Good Heart"]),
@@ -460,7 +461,9 @@ var albuns = [
     new Album("Sweetener","Ariana Grande",["raindrops (an angel cried)","blazed","the light is coming","R.E.M","God is a woman","sweetener","succesful","everytime","breathin","no tears left to cry","borderline","better off","goodnight n go","pete davidson","get well soon"]),
     new Album("thank u, next","Ariana Grande",["imagine","needy","NASA","bloodline","fake smile","bad idea","make up","ghostin","in my head","7 rings","thank u, next","break up with your girlfriend, i'm bored"]),
     new Album("Positions","Ariana Grande",["shut up","34+35","motive","just like magic","off the table","six thirty","safety net","my hair","nasty","west side","love language","positions","obvious","pov"]),
-    new Album("Eternal Sunshine","Ariana Grande",["intro (end of the world)","bye","don't wanna break up again","Saturn Returns Interlude","eternal sunshine","supernatural","true story","the boy is mine","yes, and?","we can't be friends (wait for your love)","i wish i hated you","imperfect for you","ordinary things"])
+    new Album("Eternal Sunshine","Ariana Grande",["intro (end of the world)","bye","don't wanna break up again","Saturn Returns Interlude","eternal sunshine","supernatural","true story","the boy is mine","yes, and?","we can't be friends (wait for your love)","i wish i hated you","imperfect for you","ordinary things"]),
+    new Album("Everything To Everyone","Reneé Rapp",["Everything To Everyone (Intro)","In The Kitchen","Colorado","Don't Tell My Mom","What Can I Do","Too Well","Moon"]),
+    new Album("Snow Angel","Reneé Rapp",["Talk Too Much","I Hate Boston","Poison Poison","Gemini Moon","Snow Angel","So What Now","The Wedding Song","Pretty Girls","Tummy Hurts","I Wish","Willow","23","Messy","I Do","Swim"])
 ];
 var dificuldades = [
     new Dificuldade("Fácil",false), 
