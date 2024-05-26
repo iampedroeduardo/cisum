@@ -407,7 +407,19 @@ function play(){
 function pegaCodigoSpotify(){
     var params = new URLSearchParams(document.location.search);
     codigo = params.get("code");
-    console.log(codigo);
+    var data = new FormData();
+    data.append("grant_type","authorization_code");
+    data.append("code",codigo);
+    data.append("redirect_uri","https://iampedroeduardo.github.io/cisum/game.html");
+    axios({
+        method:"POST",
+        url:"https://accounts.spotify.com/api/token",
+        data,
+        headers: {
+            Authorization: "Basic "+ btoa("2d139ecf9644474eb0f8f9d2afbac698:f6c37a25cf17433189ce0ed2b252a1ce"),
+            "Content_Type": "application/x-www-form-urlencoded"
+        }
+    });
 }
 var artistas = [
     new Artista("Taylor Swift"),
