@@ -28,16 +28,19 @@ p {
 }
 body{
     background-color: black;
+    overflow: hidden;
 }
 main{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 98vw;
-    height: 98vh;
+    width: 95vw;
+    height: 95vh;
     flex-direction: column;
     gap: 10px;
     margin: auto;
+    padding: 15px;
+    overflow: hidden;
 }
 .menu{
     width: 600px;
@@ -62,9 +65,10 @@ main{
     justify-content: space-around;
     flex-direction: row;
     align-items: center;
-    width: 170px;
+    height: 50px;
     padding: 10px;
     border-radius: 10px;
+    gap: 10px;
 }
 .artistas{
     display:flex;
@@ -72,10 +76,19 @@ main{
     align-items: center;
     padding: 10px;
     overflow-x: scroll;
+}
+.doisartistas{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
     gap: 10px;
 }
-.artista:hover, .album:hover, .dificuldade:hover, .on{
+.on{
     background-color: rgba(255, 255, 255, 0.082);
+    cursor: pointer;
+}
+.off:hover{
+    background-color: rgba(255, 255, 255, 0.035);
     cursor: pointer;
 }
 .album img{
@@ -151,13 +164,12 @@ main{
     border-radius: 10px;
 }
 .jogo{
-    width: 95vw;
-    height: 95vh;
+    width: 90vw;
+    height: 90vh;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.082);
     padding: 20px;
     overflow: scroll;
-    margin: 10px;
 }
 .controle{
     display: flex;
@@ -244,4 +256,57 @@ main{
     font-size: 20px;
     background-color: #81b71a;
     cursor: pointer;
+}
+@media (max-width: 900px){
+    .menu{
+        width: 85vw;
+        height: 90vh;
+    }
+    .jogo{
+        width: 85vw;
+    }
+    .controle{
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .pausar{
+        width: 100px;
+    }
+    .input{
+        width: 150px;
+    }
+    td{
+        width: 30px;
+        height: auto;
+    }
+    .dificuldade{
+        width: 100px;
+    }
+    .artista{
+        height: 70px;
+    }
+    .doisartistas{
+        flex-direction: column;
+    }
+    .artistas{
+        gap: 10px;
+    }
+    .album{
+        height: 50px;
+    }
+    .janela{
+        position: absolute;
+        width: 70vw;
+        height: 30vh;
+        top: 35vh;
+        left: 15vw;
+        background-color: rgb(43, 43, 43);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        border-radius: 10px;
+        text-align: center;
+    }
 }

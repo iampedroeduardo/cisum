@@ -155,19 +155,20 @@ class Dificuldade{
         this.on = true;
         this.element.setAttribute("class","dificuldade on");
         this.element.setAttribute("onclick","");
-        for(var dificuldade of dificuldades){
-            if(dificuldade != this){
-                dificuldade.on = false;
-                dificuldade.element.setAttribute("class","dificuldade off");
-            }
-        }
-        menu();
+    }
+    desativa(){
+        this.on = false;
+        this.element.setAttribute("class","dificuldade off");
+        this.element.setAttribute("onclick","ativaDificuldade('"+this.nome+"')");
     }
 }
 function ativaDificuldade(nome){
     for(var dificuldade of dificuldades){
         if(dificuldade.nome == nome){
             dificuldade.ativa();
+        }
+        else{
+            dificuldade.desativa();
         }
     }
 }
@@ -325,8 +326,15 @@ function menu(){
     div.appendChild(p);
     divart = document.createElement("div");
     divart.setAttribute("class","artistas");
-    for(var artista of artistas){
-        divart.appendChild(artista.opcao());
+    for(var i = 0; i < artistas.length; i++){
+        if(i%2 == 0){
+            var div2 = document.createElement("div");
+            div2.setAttribute("class","doisartistas");
+        }
+        else{
+            divart.appendChild(div2);
+        }
+        div2.appendChild(artistas[i].opcao());
     }
     div.appendChild(divart);
     var p = document.createElement("p");
