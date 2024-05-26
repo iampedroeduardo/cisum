@@ -336,6 +336,9 @@ function menu(){
         }
         div2.appendChild(artistas[i].opcao());
     }
+    if(i%2 != 0){
+        divart.appendChild(div2);
+    }
     div.appendChild(divart);
     var p = document.createElement("p");
     p.setAttribute("class","titulo");
