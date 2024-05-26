@@ -33,12 +33,11 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 98vw;
+    height: 98vh;
     flex-direction: column;
     gap: 10px;
-    overflow: scroll;
-    margin: 10px;
+    margin: auto;
 }
 .menu{
     width: 600px;
@@ -152,12 +151,13 @@ main{
     border-radius: 10px;
 }
 .jogo{
-    width: 800px;
-    height: 600px;
+    width: 95vw;
+    height: 95vh;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.082);
     padding: 20px;
     overflow: scroll;
+    margin: 10px;
 }
 .controle{
     display: flex;
@@ -183,7 +183,7 @@ main{
 }
 .pausar{
     color: black;
-    width: 120px;
+    width: 150px;
     padding: 10px;
     border-radius: 10px;
     border: 0;
@@ -199,6 +199,7 @@ main{
     overflow-x: scroll;
     padding-top: 10px;
     gap: 10px;
+    justify-content: space-around;
 }
 .td{
     text-wrap: nowrap;

@@ -292,14 +292,6 @@ function voltar(){
 }
 function finish(){
     clearInterval(intervalo);
-    document.querySelector(".input").disabled = true;
-    document.querySelector(".input").value = "Acabou!";
-    document.querySelector(".input").style = "background-color:rgba(0,0,0,0);color:#81b71a;";
-    document.querySelectorAll(".pausar")[0].innerHTML = "Acabou!";
-    document.querySelectorAll(".pausar")[1].innerHTML = "Acabou!";
-    document.querySelectorAll(".pausar")[0].setAttribute("onclick","");
-    document.querySelectorAll(".pausar")[1].setAttribute("onclick","");
-    document.querySelector(".contador").style.color = "#81b71a";
     if(songsok == songson){
         var msg = "Parabéns! Você conseguiu lembrar de todas!"
     }
@@ -309,15 +301,14 @@ function finish(){
     else{
         var msg = "Você desistiu!";
     }
-    var div = document.createElement("div");
-    div.setAttribute("class","finish");
-    div.innerHTML = `
-    <p>${msg}</p>
-    <div class="botoes">
-        <button onclick="play();">Jogar Novamente</button>
-        <button onclick="menu();">Menu</button>
-    </div>
-    `;
+    document.querySelector(".input").disabled = true;
+    document.querySelector(".input").value = msg;
+    document.querySelector(".input").style = "background-color:rgba(0,0,0,0);color:#81b71a;";
+    document.querySelectorAll(".pausar")[0].innerHTML = "Jogar Novamente";
+    document.querySelectorAll(".pausar")[1].innerHTML = "Menu";
+    document.querySelectorAll(".pausar")[0].setAttribute("onclick","play()");
+    document.querySelectorAll(".pausar")[1].setAttribute("onclick","menu()");
+    document.querySelector(".contador").style.color = "#81b71a";
     for(var album of albuns){
         if(album.on){
             for(song of album.songs){
@@ -327,7 +318,6 @@ function finish(){
             }
         }
     }
-    document.querySelector("main").appendChild(div);
 }
 function testa(){
     var input = document.querySelector(".input");
@@ -452,7 +442,7 @@ var albuns = [
     new Album("Super","Jão",["Escorpião","Me Lambe","Gameboy","Alinhamento Milenar","Lábia","Maria","Julho","Eu Posso Ser Como Você","Sinais","Se O Problema Era Você, Por Que Doeu Em Mim?","Locadora","Rádio","São Paulo, 2015","Super"]),
     new Album("Cavetown","Cavetown",["Meteor Shower","Everything Is Temporary (Sticks and Stones)","We're Alive","Hazel","Untitled V.2","Intermission","Banana Bread","Devil Town"]),
     new Album("16 / 04 / 16","Cavetown",["Night Knuckles","BG Noise","Psychometry","So Much","Calpol","Snake and the Prairie dogs","16 / 04 / 16 (Jack's Song)","Irrational","Nostalgia in my BedRoom","LavalceRink","Trenchh","Sliiping Lately"]),
-    new Album("Lemon Boy","Cavetown",["Lemon Boy","Green","It's U","Fool","Another One of Those Days","Taking Care of Things","Big Bowl in the Sky","888","Poison","10 Feet All","I'll Make Cereal","Pigeon"]),
+    new Album("Lemon Boy","Cavetown",["Lemon Boy","Green","It's U","Fool","Another One of Those Days","Taking Care of Things","Big Bowl in the Sky","888","Poison","10 Feet Tall","I'll Make Cereal","Pigeon"]),
     new Album("Sleepyhead","Cavetown",["Sweet Tooth","For You","Telescope","Feb 14","Pyjama Pants","Trying","Things That Make It Warm","Snail","Wishing Well","I Miss My Mum","Empty Bed"]),
     new Album("worm food","Cavetown",["worm food","kill u","frog","a kind thing to do","1994","better","wasabi","fall in love with a girl","grey space","heart attack","i swear to god","juno","laundry day"]),
     new Album("Yours Truly","Ariana Grande",["Honeymoon Avenue","Baby I","Right There","Tatooed Heart","Lovin' It","Piano","Daydreamin'","The Way","You'll Never Know","Almost Is Never Enough","Popular Song","Better Left Unsaid"]),
