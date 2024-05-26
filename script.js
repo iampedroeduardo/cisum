@@ -405,7 +405,7 @@ function play(){
     }
 }
 function teste(){
-    location.href = "https://accounts.spotify.com/authorize?response_type=code&client_id=2d139ecf9644474eb0f8f9d2afbac698&scope=playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public&redirect_uri=http://127.0.0.1:5500/game.html";
+    location.href = "https://accounts.spotify.com/authorize?response_type=code&client_id=2d139ecf9644474eb0f8f9d2afbac698&scope=playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public&redirect_uri=https://iampedroeduardo.github.io/cisum/game.html";
 }
 var artistas = [
     new Artista("Taylor Swift"),
