@@ -404,6 +404,11 @@ function play(){
         comecaTempo();
     }
 }
+function pegaCodigoSpotify(){
+    var params = new URLSearchParams(document.location.search);
+    codigo = params.get("code");
+    console.log(codigo);
+}
 var artistas = [
     new Artista("Taylor Swift"),
     new Artista("Jão"),
@@ -447,5 +452,6 @@ var dificuldades = [
     new Dificuldade("Médio",true), 
     new Dificuldade("Difícil",false)
 ];
-var songson = 0, songsok = 0, tempo, intervalo;
+var songson = 0, songsok = 0, tempo, intervalo, codigo;
+pegaCodigoSpotify();
 menu();
