@@ -276,9 +276,14 @@ main{
     .input{
         width: 150px;
     }
-    td{
-        width: 30px;
+    .td{
+        text-wrap: wrap;
+        padding: 5px;
+        text-align: center;
+        width: 100px;
         height: auto;
+        border-radius: 7px;
+        margin-top:5px;
     }
     .dificuldade{
         width: 100px;
