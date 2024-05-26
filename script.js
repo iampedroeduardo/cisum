@@ -86,7 +86,7 @@ class Artista{
     constructor(nome){
         this.nome = nome;
         this.foto = "img/" + simplificaNome(nome,true) + "artista.png";
-        this.on = true;
+        this.on = false;
     }
     opcao(){
         this.element = document.createElement("div");
