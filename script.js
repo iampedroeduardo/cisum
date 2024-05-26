@@ -230,37 +230,13 @@ function pontuacao(){
 }
 function comecaTempo(){
     if(dificuldades[0].on){
-        if(songson<100){
-            tempo = 15*60;
-        }
-        else if(songson<200){
-            tempo = 25*60;
-        }
-        else{
-            tempo = 35*60;
-        }
+        tempo = Math.round(songson*9/60)*60;
     }
     if(dificuldades[1].on){
-        if(songson<100){
-            tempo = 10*60;
-        }
-        else if(songson<200){
-            tempo = 20*60;
-        }
-        else{
-            tempo = 30*60;
-        }
+        tempo = Math.round(songson*7/60)*60;
     }
     if(dificuldades[2].on){
-        if(songson<100){
-            tempo = 5*60;
-        }
-        else if(songson<200){
-            tempo = 15*60;
-        }
-        else{
-            tempo = 25*60;
-        }
+        tempo = Math.round(songson*5/60)*60;
     }
     intervalo = setInterval(contaTempo,1000);
 }
