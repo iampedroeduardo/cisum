@@ -417,7 +417,7 @@ async function pegaCodigoSpotify(){
         }
     })
     perfil = await json.json();
-
+    menu();
 }
 var artistas = [
     new Artista("Taylor Swift"),
@@ -464,4 +464,3 @@ var dificuldades = [
 ];
 var songson = 0, songsok = 0, tempo, intervalo, token, perfil;
 pegaCodigoSpotify();
-menu();
