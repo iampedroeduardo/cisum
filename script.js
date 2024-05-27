@@ -435,7 +435,7 @@ function pegaCodigoSpotify(){
     json: true
     };
 
-    axios.(authOptions);
+    axios(authOptions);
 }
 var artistas = [
     new Artista("Taylor Swift"),
