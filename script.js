@@ -407,7 +407,7 @@ function play(){
 function pegaCodigoSpotify(){
     var params = new URLSearchParams(document.location.search);
     token = params.get("access_token");
-    console.log(params);
+    console.log(document.location.search);
     fetch("https://api.spotify.com/v1/me",{
         method:"GET",
         headers:{
