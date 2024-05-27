@@ -426,9 +426,6 @@ function pegaCodigoSpotify(){
     };
     fetch("https://accounts.spotify.com/api/token", api)
     .then(data => {
-        if (!data.ok) {
-            throw Error(data.status);
-        }
         data.header("Access-Control-Allow-Origin", "*");
         data.header("Access-Control-Allow-Credentials", "true");
         data.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
@@ -436,9 +433,7 @@ function pegaCodigoSpotify(){
         return data.set;
     }).then(update => {
         console.log(update);
-    }).catch(e => {
-        console.log(e);
-    });
+    })
 }
 var artistas = [
     new Artista("Taylor Swift"),
