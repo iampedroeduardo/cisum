@@ -421,7 +421,7 @@ function pegaCodigoSpotify(){
             "Content_Type": "application/x-www-form-urlencoded",
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers": "Authorization", 
-            "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE" ,
+            "Access-Control-Allow-Methods": "POST" ,
             "Content-Type": "application/json;charset=UTF-8" 
         }
     });
