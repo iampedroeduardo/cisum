@@ -1,3 +1,3 @@
 function login(){
-    location.href = "https://accounts.spotify.com/authorize?response_type=token&client_id=2d139ecf9644474eb0f8f9d2afbac698&scope=playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public user-read-email ugc-image-upload user-read-playback-state user-modify-playback-state user-read-currently-playing app-remote-control streaming user-follow-modify user-follow-read user-read-playback-position user-top-read user-read-recently-played user-library-modify user-library-read user-read-private user-soa-link user-soa-unlink soa-manage-entitlements soa-manage-partner soa-create-partner&redirect_uri=https://iampedroeduardo.github.io/cisum/game.html";
+    location.href = "https://accounts.spotify.com/authorize?response_type=token&client_id=2d139ecf9644474eb0f8f9d2afbac698&scope=user-read-private user-read-email&redirect_uri=https://iampedroeduardo.github.io/cisum/game.html";
 }
