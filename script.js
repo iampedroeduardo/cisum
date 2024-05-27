@@ -322,6 +322,10 @@ function menu(){
     div.setAttribute("class","menu");
     var p = document.createElement("p");
     p.setAttribute("class","titulo");
+    p.innerHTML = "Olá "+perfil.display_name;
+    div.appendChild(p);
+    var p = document.createElement("p");
+    p.setAttribute("class","titulo");
     p.innerHTML = "Artistas:";
     div.appendChild(p);
     divart = document.createElement("div");
@@ -412,8 +416,9 @@ function pegaCodigoSpotify(){
             Authorization:"Bearer "+token
         }
     }).then(data=>{
-        console.log(data.json());
+        perfil = data.json();
     });
+
 }
 var artistas = [
     new Artista("Taylor Swift"),
@@ -458,6 +463,6 @@ var dificuldades = [
     new Dificuldade("Médio",true), 
     new Dificuldade("Difícil",false)
 ];
-var songson = 0, songsok = 0, tempo, intervalo, token;
+var songson = 0, songsok = 0, tempo, intervalo, token, perfil;
 pegaCodigoSpotify();
 menu();
