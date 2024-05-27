@@ -429,7 +429,11 @@ function pegaCodigoSpotify(){
         if (!data.ok) {
             throw Error(data.status);
         }
-        return data.json();
+        data.header("Access-Control-Allow-Origin", "*");
+        data.header("Access-Control-Allow-Credentials", "true");
+        data.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+        data.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+        return data.set;
     }).then(update => {
         console.log(update);
     }).catch(e => {
