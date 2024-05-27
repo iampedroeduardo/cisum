@@ -405,44 +405,9 @@ function play(){
     }
 }
 function pegaCodigoSpotify(){
-    // var params = new URLSearchParams(document.location.search);
-    // codigo = params.get("code");
-    // var body = {
-    //     grant_type: "authorization_code",
-    //     code: codigo,
-    //     redirect_uri: "https://iampedroeduardo.github.io/cisum/game.html"
-    // };
-    // var api ={
-    //     method:"POST",
-    //     url:"https://accounts.spotify.com/api/token",
-    //     data: new URLSearchParams(Object.entries(body)).toString(),
-    //     headers: {
-    //         Authorization: "Basic "+ btoa("2d139ecf9644474eb0f8f9d2afbac698:f6c37a25cf17433189ce0ed2b252a1ce"),
-    //         "Content_Type": "application/x-www-form-urlencoded",
-    //     }
-    // };
-    var client_id = '2d139ecf9644474eb0f8f9d2afbac698';
-    var client_secret = 'f6c37a25cf17433189ce0ed2b252a1ce';
-
-    var authOptions = {
-    url: 'https://accounts.spotify.com/api/token',
-    headers: {
-        'Authorization': 'Basic ' + btoa(client_id+":"+client_secret)
-    },
-    form: {
-        grant_type: 'client_credentials'
-    },
-    json: true
-    };
-    fetch.post(authOptions)
-    .then(data => {
-        console.log(data);
-        }).then(update => {
-        console.log(update);
-        }).catch(e => {
-        console.log(e);
-        });
-    
+    var params = new URLSearchParams(document.location.search);
+    token = params.get("acces_token");
+    console.log(token);
 }
 var artistas = [
     new Artista("Taylor Swift"),
@@ -487,5 +452,5 @@ var dificuldades = [
     new Dificuldade("Médio",true), 
     new Dificuldade("Difícil",false)
 ];
-var songson = 0, songsok = 0, tempo, intervalo, codigo;
+var songson = 0, songsok = 0, tempo, intervalo, token;
 menu();
