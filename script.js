@@ -408,6 +408,14 @@ function pegaCodigoSpotify(){
     var params = new URLSearchParams(document.location.search);
     token = params.get("acces_token");
     console.log(token);
+    fetch("https://api.spotify.com/v1/me",{
+        method:"GET",
+        headers:{
+            Authorization:"Bearer "+token
+        }
+    }).then(data=>{
+        console.log(data);
+    });
 }
 var artistas = [
     new Artista("Taylor Swift"),
