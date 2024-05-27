@@ -412,7 +412,7 @@ function pegaCodigoSpotify(){
             Authorization:"Bearer "+token
         }
     }).then(data=>{
-        console.log(data);
+        console.log(data.json());
     });
 }
 var artistas = [
