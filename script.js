@@ -405,35 +405,48 @@ function play(){
     }
 }
 function pegaCodigoSpotify(){
-    var params = new URLSearchParams(document.location.search);
-    codigo = params.get("code");
-    var body = {
-        grant_type: "authorization_code",
-        code: codigo,
-        redirect_uri: "https://iampedroeduardo.github.io/cisum/game.html"
+    // var params = new URLSearchParams(document.location.search);
+    // codigo = params.get("code");
+    // var body = {
+    //     grant_type: "authorization_code",
+    //     code: codigo,
+    //     redirect_uri: "https://iampedroeduardo.github.io/cisum/game.html"
+    // };
+    // var api ={
+    //     method:"POST",
+    //     url:"https://accounts.spotify.com/api/token",
+    //     data: new URLSearchParams(Object.entries(body)).toString(),
+    //     headers: {
+    //         Authorization: "Basic "+ btoa("2d139ecf9644474eb0f8f9d2afbac698:f6c37a25cf17433189ce0ed2b252a1ce"),
+    //         "Content_Type": "application/x-www-form-urlencoded",
+    //     }
+    // };
+    var client_id = '2d139ecf9644474eb0f8f9d2afbac698';
+    var client_secret = 'f6c37a25cf17433189ce0ed2b252a1ce';
+
+    var authOptions = {
+    url: 'https://accounts.spotify.com/api/token',
+    method: "POST",
+    headers: {
+        'Authorization': 'Basic ' + btoa(client_id+":"+client_secret);
+    },
+    form: {
+        grant_type: 'client_credentials'
+    },
+    json: true
     };
-    var api ={
-        method:"POST",
-        data: new URLSearchParams(Object.entries(body)).toString(),
-        headers: {
-            Authorization: "Basic "+ btoa("2d139ecf9644474eb0f8f9d2afbac698:f6c37a25cf17433189ce0ed2b252a1ce"),
-            "Content_Type": "application/x-www-form-urlencoded",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": "true",
-            "Access-Control-Allow-Methods": "POST",
-            "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Accept, Accept-Language, Content-Language, Content-Type"
-        }
-    };
-    fetch("https://accounts.spotify.com/api/token", api)
+    fetch(authOptions)
     .then(data => {
-        data.header("Access-Control-Allow-Origin", "*");
-        data.header("Access-Control-Allow-Credentials", "true");
-        data.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-        data.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-        return data.set;
-    }).then(update => {
+        if (!data.ok) {
+          throw Error(data.status);
+         }
+         return data.json();
+        }).then(update => {
         console.log(update);
-    })
+        }).catch(e => {
+        console.log(e);
+        });
+    
 }
 var artistas = [
     new Artista("Taylor Swift"),
