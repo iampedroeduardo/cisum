@@ -488,5 +488,4 @@ var dificuldades = [
     new Dificuldade("Difícil",false)
 ];
 var songson = 0, songsok = 0, tempo, intervalo, codigo;
-pegaCodigoSpotify();
 menu();
