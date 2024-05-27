@@ -415,7 +415,7 @@ function pegaCodigoSpotify(){
     axios({
         method:"POST",
         url:"https://accounts.spotify.com/api/token",
-        data: URLSearchParams(Object.entries(body)).toString(),
+        data: new URLSearchParams(Object.entries(body)).toString(),
         headers: {
             Authorization: "Basic "+ btoa("2d139ecf9644474eb0f8f9d2afbac698:f6c37a25cf17433189ce0ed2b252a1ce"),
             "Content_Type": "application/x-www-form-urlencoded"
