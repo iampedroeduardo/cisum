@@ -408,16 +408,14 @@ function play(){
         comecaTempo();
     }
 }
-function pegaCodigoSpotify(){
+async function pegaCodigoSpotify(){
     token = document.location.hash.substring(document.location.hash.indexOf("access_token=")+13,document.location.hash.indexOf("&"));
-    fetch("https://api.spotify.com/v1/me",{
+    perfil = await fetch("https://api.spotify.com/v1/me",{
         method:"GET",
         headers:{
             Authorization:"Bearer "+token
         }
-    }).then(data=>{
-        perfil = data.json();
-    });
+    }).json();
 
 }
 var artistas = [
