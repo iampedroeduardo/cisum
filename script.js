@@ -427,7 +427,7 @@ function pegaCodigoSpotify(){
     var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: {
-        'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
+        'Authorization': 'Basic ' + btoa(client_id+":"+client_secret)
     },
     form: {
         grant_type: 'client_credentials'
