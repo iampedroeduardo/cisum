@@ -420,9 +420,9 @@ function pegaCodigoSpotify(){
             Authorization: "Basic "+ btoa("2d139ecf9644474eb0f8f9d2afbac698:f6c37a25cf17433189ce0ed2b252a1ce"),
             "Content_Type": "application/x-www-form-urlencoded",
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": "true",
-            "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-            "Access-Control-Allow-Headers": "Content-Type"
+            "Access-Control-Allow-Headers": "Authorization", 
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE" ,
+            "Content-Type": "application/json;charset=UTF-8" 
         }
     });
 }
