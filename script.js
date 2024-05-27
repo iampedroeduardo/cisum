@@ -418,11 +418,7 @@ function pegaCodigoSpotify(){
         data: new URLSearchParams(Object.entries(body)).toString(),
         headers: {
             Authorization: "Basic "+ btoa("2d139ecf9644474eb0f8f9d2afbac698:f6c37a25cf17433189ce0ed2b252a1ce"),
-            "Content_Type": "application/x-www-form-urlencoded",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "User-Agent, Keep-Alive, Content-Type, Authorization, client-token, spotify-installation-id, dpop", 
-            "Access-Control-Allow-Methods": "OPTIONS, GET, POST, DELETE, PUT" ,
-            "Content-Type": "application/json;charset=UTF-8" 
+            "Content_Type": "application/x-www-form-urlencoded"
         }
     });
 }
