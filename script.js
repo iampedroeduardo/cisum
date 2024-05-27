@@ -412,14 +412,24 @@ function pegaCodigoSpotify(){
         code: codigo,
         redirect_uri: "https://iampedroeduardo.github.io/cisum/game.html"
     };
-    axios({
+    var api ={
         method:"POST",
-        url:"https://accounts.spotify.com/api/token",
         data: new URLSearchParams(Object.entries(body)).toString(),
         headers: {
             Authorization: "Basic "+ btoa("2d139ecf9644474eb0f8f9d2afbac698:f6c37a25cf17433189ce0ed2b252a1ce"),
             "Content_Type": "application/x-www-form-urlencoded",
         }
+    };
+    fetch("https://accounts.spotify.com/api/token", api)
+    .then(data => {
+        if (!data.ok) {
+            throw Error(data.status);
+        }
+        return data.json();
+    }).then(update => {
+        console.log(update);
+    }).catch(e => {
+        console.log(e);
     });
 }
 var artistas = [
