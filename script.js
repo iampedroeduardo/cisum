@@ -405,9 +405,8 @@ function play(){
     }
 }
 function pegaCodigoSpotify(){
-    var pesquisa = document.location;
-    token = pesquisa.substring(pesquisa.indexOf("access_token="),pesquisa.indexOf("&"));
-    console.log(token);
+    var params = new URLSearchParams(document.location.hash);
+    token = params.get("access_token");
     fetch("https://api.spotify.com/v1/me",{
         method:"GET",
         headers:{
