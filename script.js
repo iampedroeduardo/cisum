@@ -437,10 +437,7 @@ function pegaCodigoSpotify(){
     };
     fetch(authOptions)
     .then(data => {
-        if (!data.ok) {
-          throw Error(data.status);
-         }
-         return data.json();
+        console.log(data);
         }).then(update => {
         console.log(update);
         }).catch(e => {
