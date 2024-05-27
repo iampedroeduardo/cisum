@@ -426,7 +426,6 @@ function pegaCodigoSpotify(){
 
     var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
-    method: "POST",
     headers: {
         'Authorization': 'Basic ' + btoa(client_id+":"+client_secret)
     },
@@ -435,7 +434,7 @@ function pegaCodigoSpotify(){
     },
     json: true
     };
-    fetch(authOptions)
+    fetch.post(authOptions)
     .then(data => {
         console.log(data);
         }).then(update => {
