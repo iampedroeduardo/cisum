@@ -412,14 +412,33 @@ function pegaCodigoSpotify(){
         code: codigo,
         redirect_uri: "https://iampedroeduardo.github.io/cisum/game.html"
     };
-    axios({
-        method:"POST",
-        url:"https://accounts.spotify.com/api/token",
-        data: new URLSearchParams(Object.entries(body)).toString(),
-        headers: {
-            Authorization: "Basic "+ btoa("2d139ecf9644474eb0f8f9d2afbac698:f6c37a25cf17433189ce0ed2b252a1ce"),
-            "Content_Type": "application/x-www-form-urlencoded",
-        }
+    // axios({
+    //     method:"POST",
+    //     url:"https://accounts.spotify.com/api/token",
+    //     data: new URLSearchParams(Object.entries(body)).toString(),
+    //     headers: {
+    //         Authorization: "Basic "+ btoa("2d139ecf9644474eb0f8f9d2afbac698:f6c37a25cf17433189ce0ed2b252a1ce"),
+    //         "Content_Type": "application/x-www-form-urlencoded",
+    //     }
+    // });
+    var client_id = '2d139ecf9644474eb0f8f9d2afbac698';
+    var client_secret = 'f6c37a25cf17433189ce0ed2b252a1ce';
+
+    var authOptions = {
+    url: 'https://accounts.spotify.com/api/token',
+    headers: {
+        'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
+    },
+    form: {
+        grant_type: 'client_credentials'
+    },
+    json: true
+    };
+
+    request.post(authOptions, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+        var token = body.access_token;
+    }
     });
 }
 var artistas = [

@@ -259,8 +259,22 @@ main{
     background-color: #81b71a;
     cursor: pointer;
 }
+.login{
+    width: 600px;
+    height: 450px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.082);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media (max-width: 900px){
     .menu{
+        width: 85vw;
+        height: 90vh;
+    }
+    .login{
         width: 85vw;
         height: 90vh;
     }
