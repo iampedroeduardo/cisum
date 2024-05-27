@@ -410,12 +410,13 @@ function play(){
 }
 async function pegaCodigoSpotify(){
     token = document.location.hash.substring(document.location.hash.indexOf("access_token=")+13,document.location.hash.indexOf("&"));
-    perfil = await fetch("https://api.spotify.com/v1/me",{
+    var json = await fetch("https://api.spotify.com/v1/me",{
         method:"GET",
         headers:{
             Authorization:"Bearer "+token
         }
-    }).json();
+    })
+    perfil = await json.json();
 
 }
 var artistas = [
