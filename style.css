@@ -324,7 +324,6 @@ main{
 @media (max-width: 900px){
     .menu{
         width: 85vw;
-        height: 90vh;
     }
     .login{
         width: 85vw;
@@ -332,7 +331,6 @@ main{
     }
     .maisjanela{
         width: 85vw;
-        height: 90vh;
     }
     .carregando{
         width: 85vw;

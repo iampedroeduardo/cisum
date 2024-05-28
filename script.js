@@ -154,6 +154,9 @@ class Artista{
     }
     ativa(){
         this.on = !this.on;
+        if(document.querySelector(".menu") != null){
+            menu();
+        }
         if(this.on){
             this.element.setAttribute("class","artista on");
         }
