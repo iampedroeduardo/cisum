@@ -507,8 +507,8 @@ function mais(tipo){
     button.innerHTML = "Ok";
     divpai.appendChild(div);
     divok.appendChild(button);
-    div.appendChild(divok);
-    main.appendChild(div);
+    divpai.appendChild(divok);
+    main.appendChild(divpai);
 }
 function play(){
     if(testaCondicoes()){
