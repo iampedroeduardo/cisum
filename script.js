@@ -61,6 +61,9 @@ class Album{
     }
     ativa(){
         this.on = !this.on;
+        if(document.querySelector(".menu") != null){
+            menu();
+        }
         if(this.on){
             this.element.setAttribute("class","album on");
         }
@@ -115,6 +118,9 @@ class Playlist{
     }
     ativa(){
         this.on = !this.on;
+        if(document.querySelector(".menu") != null){
+            menu();
+        }
         if(this.on){
             this.element.setAttribute("class","album on");
         }
@@ -442,6 +448,51 @@ function mais(tipo){
         espaco.setAttribute("class","espaco");
         for(var artista of artistas){
             espaco.appendChild(artista.opcao());
+        }
+        div.appendChild(p);
+        div.appendChild(espaco);
+    }
+    if(tipo == "album"){
+        var p = document.createElement("p");
+        p.setAttribute("class","titulop");
+        p.innerHTML = "Seus Álbuns Favoritos";
+        var espaco = document.createElement("div");
+        espaco.setAttribute("class","espaco");
+        for(var album of albuns){
+            if(album.save){
+                espaco.appendChild(album.opcao());
+            }
+        }
+        div.appendChild(p);
+        div.appendChild(espaco);
+        var p = document.createElement("p");
+        p.setAttribute("class","titulop");
+        p.innerHTML = "Álbuns dos Seus Artistas Favoritos";
+        for(artista of artistas){
+            if(artista.on){
+                var p2 = document.createElement("p");
+                p2.setAttribute("class","titulop");
+                p2.innerHTML = artista.nome;
+                var espaco = document.createElement("div");
+                espaco.setAttribute("class","espaco");
+                for(var album of albuns){
+                    if(album.artista == artista.id && !album.save){
+                        espaco.appendChild(album.opcao());
+                    }
+                }
+                div.appendChild(p2);
+                div.appendChild(espaco);
+            }
+        }
+    }
+    if(tipo == "playlist"){
+        var p = document.createElement("p");
+        p.setAttribute("class","titulop");
+        p.innerHTML = "Suas Playlists Favoritas";
+        var espaco = document.createElement("div");
+        espaco.setAttribute("class","espaco");
+        for(var playlist of playlists){
+            espaco.appendChild(playlist.opcao());
         }
         div.appendChild(p);
         div.appendChild(espaco);
