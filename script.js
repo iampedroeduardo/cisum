@@ -75,11 +75,19 @@ class Album{
         }
     }
 }
+function ativaAlbum(nome){
+    for(var album of albuns){
+        if(album.nome == nome){
+            album.ativa();
+        }
+    }
+}
 class Playlist{
     constructor(nome,foto,songs){
         this.nome = nome;
         this.foto = foto;
         this.songs = songs;
+        this.on = true
     }
     table(){
         var div = document.createElement("div");
@@ -120,10 +128,10 @@ class Playlist{
         }
     }
 }
-function ativaAlbum(nome){
-    for(var album of albuns){
-        if(album.nome == nome){
-            album.ativa();
+function ativaPlaylist(nome){
+    for(var playlist of playlists){
+        if(playlist.nome == nome){
+            playlist.ativa();
         }
     }
 }
@@ -367,31 +375,11 @@ function menu(){
     div.setAttribute("class","menu");
     var p = document.createElement("p");
     p.setAttribute("class","titulo");
-    p.innerHTML = "Olá "+perfil.display_name;
+    p.innerHTML = "Olá "+perfil.display_name+"!";
     div.appendChild(p);
     var p = document.createElement("p");
     p.setAttribute("class","titulo");
-    p.innerHTML = "Artistas:";
-    div.appendChild(p);
-    divart = document.createElement("div");
-    divart.setAttribute("class","artistas");
-    for(var i = 0; i < artistas.length; i++){
-        if(i%2 == 0){
-            var div2 = document.createElement("div");
-            div2.setAttribute("class","doisartistas");
-        }
-        else{
-            divart.appendChild(div2);
-        }
-        div2.appendChild(artistas[i].opcao());
-    }
-    if(i%2 != 0){
-        divart.appendChild(div2);
-    }
-    div.appendChild(divart);
-    var p = document.createElement("p");
-    p.setAttribute("class","titulo");
-    p.innerHTML = "Álbuns:";
+    p.innerHTML = "Playlists:";
     div.appendChild(p);
     divalb = document.createElement("div");
     divalb.setAttribute("class","albuns");
