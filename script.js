@@ -137,14 +137,15 @@ function ativaPlaylist(id){
     }
 }
 class Artista{
-    constructor(nome){
+    constructor(id,nome,foto){
+        this.id = id;
         this.nome = nome;
-        this.foto = "img/" + simplificaNome(nome,true) + "artista.png";
-        this.on = false;
+        this.foto = foto;
+        this.on = true;
     }
     opcao(){
         this.element = document.createElement("div");
-        this.element.setAttribute("onclick","ativaArtista('"+this.nome+"')");
+        this.element.setAttribute("onclick",`ativaArtista("${this.id}")`);
         if(this.on){
             this.element.setAttribute("class","artista on");
         }
@@ -179,9 +180,9 @@ class Artista{
         }
     }
 }
-function ativaArtista(nome){
+function ativaArtista(id){
     for(var artista of artistas){
-        if(artista.nome == nome){
+        if(artista.id == id){
             artista.ativa();
         }
     }
@@ -380,6 +381,16 @@ function menu(){
     div.appendChild(p);
     var p = document.createElement("p");
     p.setAttribute("class","titulo");
+    p.innerHTML = "Artistas:";
+    div.appendChild(p);
+    divart = document.createElement("div");
+    divart.setAttribute("class","artistas");
+    for(var artistas of artistas){
+        divart.appendChild(artistas.opcao());
+    }
+    div.appendChild(divart);
+    var p = document.createElement("p");
+    p.setAttribute("class","titulo");
     p.innerHTML = "Playlists:";
     div.appendChild(p);
     divalb = document.createElement("div");
@@ -476,6 +487,10 @@ async function pegaCodigoSpotify(){
     })
     var artistasjson = await json.json();
     console.log(artistasjson);
+    for(var i = 0; i<artistasjson.items.length; i++){
+        console.log(i);
+        playlists.push(new Artista(artistasjson.items[i].id,artistasjson.items[i].name,artistasjson.items[i].images[0].url));
+    }
     menu();
 }
 var artistas = [
