@@ -610,15 +610,8 @@ async function pegaCodigoSpotify(){
                 }
             })
             var albunsjson = await json.json();
-            console.log(albunsjson);
-            for(var c = 0; c<albunsjson.items.length; c++){
-                var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[c].id,{
-                    method:"GET",
-                    headers:{
-                        Authorization:"Bearer "+token
-                    }
-                })
-                var album = await json.json();
+            albunsjson = albunsjson.items;
+            for(var album of albunsjson){
                 if(procuraAlbum(album.id)){
                     albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,false));
                 }
