@@ -154,23 +154,11 @@ class Artista{
     }
     ativa(){
         this.on = !this.on;
-        this.reiniciaAlbuns();
-        menu();
         if(this.on){
             this.element.setAttribute("class","artista on");
         }
         else{
             this.element.setAttribute("class","artista off");
-        }
-    }
-    reiniciaAlbuns(){
-        for(var album of albuns){
-            if(album.artista == this.id){
-                album.on = this.on;
-                for(var song of album.songs){
-                    song.on = false;
-                }
-            }
         }
     }
 }
@@ -455,15 +443,14 @@ function mais(tipo){
         div.appendChild(p);
         div.appendChild(espaco);
     }
-    divjogar = document.createElement("div");
-    divjogar.setAttribute("class","jogar");
+    divok = document.createElement("div");
+    divok.setAttribute("class","jogar");
     button = document.createElement("button");
     button.setAttribute("class","botaojogar");
     button.setAttribute("onclick","menu()");
     button.innerHTML = "Ok";
-    divjogar.appendChild(button);
-    div.appendChild(divjogar);
-    div.appendChild(botao);
+    divok.appendChild(button);
+    div.appendChild(divok);
     main.appendChild(div);
 }
 function play(){
