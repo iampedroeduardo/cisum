@@ -327,7 +327,7 @@ main{
 }
 @media (max-width: 900px){
     .espacos{
-        max-width: 85vh;
+        max-width: 80vh;
     }
     .menu{
         width: 85vw;
