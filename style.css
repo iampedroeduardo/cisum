@@ -323,6 +323,7 @@ main{
 }
 .espacos{
     max-height: 600px;
+    overflow-y: scroll;
 }
 @media (max-width: 900px){
     .espacos{
