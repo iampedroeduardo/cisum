@@ -610,6 +610,7 @@ async function pegaCodigoSpotify(){
                 }
             })
             var albunsjson = await json.json();
+            console.log(albunsjson);
             for(var c = 0; c<albunsjson.items.length; c++){
                 var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[c].id,{
                     method:"GET",
