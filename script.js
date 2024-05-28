@@ -574,15 +574,9 @@ async function pegaCodigoSpotify(){
             }
         })
         var playlistsjson = await json.json();
+        playlistsjson = playlistsjson.items;
         console.log(playlistsjson);
-        for(var i = 0; i<playlistsjson.items.length; i++){
-            var json = await fetch("https://api.spotify.com/v1/playlists/"+playlistsjson.items[i].id,{
-                method:"GET",
-                headers:{
-                    Authorization:"Bearer "+token
-                }
-            })
-            var playlist = await json.json();
+        for(var playlist of playlistsjson){
             playlists.push(new Playlist(playlist.id,playlist.name,playlist.images[0].url));
         }
         var json = await fetch("https://api.spotify.com/v1/me/albums?limit=50",{
@@ -592,6 +586,7 @@ async function pegaCodigoSpotify(){
             }
         })
         var albunsjson = await json.json();
+        console.log(albunsjson);
         for(var i = 0; i<albunsjson.items.length; i++){
             var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[i].album.id,{
                 method:"GET",
