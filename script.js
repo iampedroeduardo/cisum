@@ -574,6 +574,7 @@ async function pegaCodigoSpotify(){
             }
         })
         var playlistsjson = await json.json();
+        console.log(playlistsjson);
         for(var i = 0; i<playlistsjson.items.length; i++){
             var json = await fetch("https://api.spotify.com/v1/playlists/"+playlistsjson.items[i].id,{
                 method:"GET",
