@@ -455,7 +455,7 @@ async function pegaCodigoSpotify(){
             Authorization:"Bearer "+token
         }
     })
-    playlistsjson = await json.json();
+    var playlistsjson = await json.json();
     console.log(playlistsjson);
     for(var i = 0; i<playlistsjson.items.length; i++){
         console.log(i);
@@ -468,6 +468,14 @@ async function pegaCodigoSpotify(){
         playlist = await json.json();
         playlists.push(new Playlist(playlist.id,playlist.name,playlist.images[0].url,[]));
     }
+    var json = await fetch("https://api.spotify.com/v1/me/following?type=artist&limit=50",{
+        method:"GET",
+        headers:{
+            Authorization:"Bearer "+token
+        }
+    })
+    var artistasjson = await json.json();
+    console.log(artistasjson);
     menu();
 }
 var artistas = [
@@ -515,5 +523,5 @@ var dificuldades = [
     new Dificuldade("Médio",true), 
     new Dificuldade("Difícil",false)
 ];
-var songson = 0, songsok = 0, tempo, intervalo, token, playlistsjson;
+var songson = 0, songsok = 0, tempo, intervalo, token;
 pegaCodigoSpotify();
