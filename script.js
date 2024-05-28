@@ -659,7 +659,7 @@ async function pegaMusicas(){
             var n = await json.json();
             n = Math.round(n.total/50);
             for(var i = 0; i < n; i++){
-                var json = await fetch("https://api.spotify.com/v1/playlists/"+playlist.id+"/tracks?limit=50",{
+                var json = await fetch("https://api.spotify.com/v1/playlists/"+playlist.id+"/tracks?limit=50&offset="+i*50,{
                     method:"GET",
                     headers:{
                         Authorization:"Bearer "+token
