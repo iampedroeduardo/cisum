@@ -83,7 +83,8 @@ function ativaAlbum(nome){
     }
 }
 class Playlist{
-    constructor(nome,foto,songs){
+    constructor(id,nome,foto,songs){
+        this.id = id
         this.nome = nome;
         this.foto = foto;
         this.songs = songs;
@@ -105,7 +106,7 @@ class Playlist{
     }
     opcao(){
         this.element = document.createElement("div");
-        this.element.setAttribute("onclick",`ativaPlaylist("${this.nome}")`);
+        this.element.setAttribute("onclick",`ativaPlaylist("${this.id}")`);
         if(this.on){
             this.element.setAttribute("class","album on");
         }
@@ -128,9 +129,9 @@ class Playlist{
         }
     }
 }
-function ativaPlaylist(nome){
+function ativaPlaylist(id){
     for(var playlist of playlists){
-        if(playlist.nome == nome){
+        if(playlist.id == id){
             playlist.ativa();
         }
     }
@@ -465,7 +466,7 @@ async function pegaCodigoSpotify(){
             }
         })
         playlist = await json.json();
-        playlists.push(new Playlist(playlist.name,playlist.images[0].url,[]));
+        playlists.push(new Playlist(playlist.id,playlist.name,playlist.images[0].url,[]));
     }
     menu();
 }
