@@ -410,6 +410,7 @@ function play(){
 }
 async function pegaCodigoSpotify(){
     token = document.location.hash.substring(document.location.hash.indexOf("access_token=")+13,document.location.hash.indexOf("&"));
+    console.log(token);
     var json = await fetch("https://api.spotify.com/v1/me",{
         method:"GET",
         headers:{
