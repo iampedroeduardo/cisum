@@ -455,10 +455,14 @@ function mais(tipo){
         div.appendChild(p);
         div.appendChild(espaco);
     }
-    var botao = document.createElement("button");
-    botao.setAttribute("class","ok");
-    botao.setAttribute("onclick","menu()");
-    botao.innerHTML = "Ok"
+    divjogar = document.createElement("div");
+    divjogar.setAttribute("class","jogar");
+    button = document.createElement("button");
+    button.setAttribute("class","botaojogar");
+    button.setAttribute("onclick","menu()");
+    button.innerHTML = "Ok";
+    divjogar.appendChild(button);
+    div.appendChild(divjogar);
     div.appendChild(botao);
     main.appendChild(div);
 }
