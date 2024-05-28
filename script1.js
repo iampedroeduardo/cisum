@@ -455,6 +455,16 @@ function play(){
         comecaTempo();
     }
 }
+function procuraAlbum(id){
+    var tof = true;
+    for(var j=0;j<albuns.length;j++){
+        if(albuns[j].id = id){
+            tof = false;
+            break;
+        }   
+    }
+    return tof;
+}
 async function pegaCodigoSpotify(){
     try {
         token = document.location.hash.substring(document.location.hash.indexOf("access_token=")+13,document.location.hash.indexOf("&"));
@@ -503,6 +513,17 @@ async function pegaCodigoSpotify(){
                 }
             })
             var albunsjson = await json.json();
+            for(var c = 0; c<albunsjson.items.length; c++){
+                var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[c].id,{
+                    method:"GET",
+                    headers:{
+                        Authorization:"Bearer "+token
+                    }
+                })
+                var album = await json.json();
+                console.log(album);
+                albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,[]));
+            }
             console.log(albunsjson);
         }
         var json = await fetch("https://api.spotify.com/v1/me/albums?limit=50",{
@@ -523,7 +544,9 @@ async function pegaCodigoSpotify(){
             })
             var album = await json.json();
             console.log(album);
-            albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,[]));
+            if(procuraAlbum(album.id)){
+                albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,[]));
+            }
         }
     }catch(error){
         var carregando = document.querySelector(".carregando p");
