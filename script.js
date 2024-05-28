@@ -395,10 +395,8 @@ function menu(){
     div.appendChild(p);
     divalb = document.createElement("div");
     divalb.setAttribute("class","albuns");
-    for(var album of albuns){
-        if(album.on){
-            divalb.appendChild(album.opcao());
-        }
+    for(var playlist of playlists){
+        divalb.appendChild(playlist.opcao());
     }
     div.appendChild(divalb);
     var divdif = document.createElement("div");
@@ -479,7 +477,7 @@ async function pegaCodigoSpotify(){
             }
         })
         playlist = await json.json();
-        playlists.push(new Playlist(playlist.name,playlist.images[0],[]));
+        playlists.push(new Playlist(playlist.name,playlist.images[0].url,[]));
     }
     menu();
 }
