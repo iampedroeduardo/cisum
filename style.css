@@ -306,6 +306,23 @@ main{
     background-color: rgba(255, 255, 255, 0.082);
     padding: 20px;
 }
+.espaco{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+.ok{
+    color: black;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 20px;
+    background-color: #81b71a;
+    cursor: pointer;
+    margin: auto;
+}
 @media (max-width: 900px){
     .menu{
         width: 85vw;

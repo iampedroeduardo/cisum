@@ -445,7 +445,7 @@ function mais(tipo){
     div.setAttribute("class","maisjanela");
     if(tipo == "artista"){
         var p = document.createElement("p");
-        p.setAttribute("class","ptitulo");
+        p.setAttribute("class","titulop");
         p.innerHTML = "Seus Artistas Favoritos";
         var espaco = document.createElement("div");
         espaco.setAttribute("class","espaco");
