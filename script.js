@@ -385,7 +385,7 @@ function menu(){
     div.appendChild(p);
     divart = document.createElement("div");
     divart.setAttribute("class","artistas");
-    for(var artistas of artistas){
+    for(var artista of artistas){
         divart.appendChild(artistas.opcao());
     }
     div.appendChild(divart);
