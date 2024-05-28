@@ -1,6 +1,8 @@
 class Song{
-    constructor(nome){
+    constructor(id,nome,artista){
         this.nome = nome;
+        this.id = id;
+        this.artista = artista;
         this.simpleName = simplificaNome(nome,true);
         this.sigla = sigla(simplificaNome(nome,false));
         this.on = false;
@@ -29,6 +31,7 @@ class Album{
         this.foto = foto;
         this.save = save;
         this.on = false;
+        this.songs = [];
     }
     table(){
         var div = document.createElement("div");
@@ -85,6 +88,7 @@ class Playlist{
         this.nome = nome;
         this.foto = foto;
         this.on = false;
+        this.songs = [];
     }
     table(){
         var div = document.createElement("div");
@@ -557,6 +561,26 @@ function procuraAlbum(id){
     }
     return tof;
 }
+function procuraMusica(id){
+    var tof = true;
+    for(var j=0;j<musicas.length;j++){
+        if(musicas[j].id == id){
+            tof = false;
+            break;
+        }   
+    }
+    return tof;
+}
+function achaMusica(id){
+    var n;
+    for(var j=0;j<musicas.length;j++){
+        if(musicas[j].id == id){
+            n = j;
+            break;
+        }   
+    }
+    return n;
+}
 async function pegaCodigoSpotify(){
     try {
         token = document.location.hash.substring(document.location.hash.indexOf("access_token=")+13,document.location.hash.indexOf("&"));
@@ -642,8 +666,15 @@ async function pegaMusicas(){
                     }
                 })
                 json = await json.json();
-                json = json.items;
-                console.log(json);
+                var songs = json.items;
+                for(song of songs){
+                    song = song.track;
+                    if(procuraMusica(song.id)){
+                        musicas.push(new Song(song.id,song.name,song.artists[0].id));
+                    }
+                    playlist.songs.push(achaMusica(song.id));
+                }
+                
             }
         }
     }
