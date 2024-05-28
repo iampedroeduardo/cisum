@@ -468,8 +468,8 @@ async function pegaCodigoSpotify(){
             Authorization:"Bearer "+token
         }
     })
-    playlists = await json.json();
-    console.log(playlists);
+    playlistsjson = await json.json();
+    console.log(playlistsjson);
     for(var i = 0; i<playlists.items.length; i++){
         console.log(i);
         var json = await fetch("https://api.spotify.com/v1/playlists/"+playlists.items[i].id,{
@@ -479,7 +479,7 @@ async function pegaCodigoSpotify(){
             }
         })
         playlist = await json.json();
-        console.log(playlist);
+        playlists.push(new Playlist(playlist.name,playlist.images[0],[]));
     }
     menu();
 }
@@ -528,5 +528,5 @@ var dificuldades = [
     new Dificuldade("Médio",true), 
     new Dificuldade("Difícil",false)
 ];
-var songson = 0, songsok = 0, tempo, intervalo, token, playlists;
+var songson = 0, songsok = 0, tempo, intervalo, token, playlistsjson;
 pegaCodigoSpotify();
