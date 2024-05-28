@@ -105,7 +105,7 @@ class Playlist{
     }
     opcao(){
         this.element = document.createElement("div");
-        this.element.setAttribute("onclick","ativaPlaylist('"+this.nome+"')");
+        this.element.setAttribute("onclick",`ativaPlaylist("${this.nome}")`);
         if(this.on){
             this.element.setAttribute("class","album on");
         }
