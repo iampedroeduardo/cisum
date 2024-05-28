@@ -450,7 +450,7 @@ function mais(tipo){
         var espaco = document.createElement("div");
         espaco.setAttribute("class","espaco");
         for(var artista of artistas){
-            espaco.appendChild(artista.opcao);
+            espaco.appendChild(artista.opcao());
         }
         div.appendChild(p);
         div.appendChild(espaco);
