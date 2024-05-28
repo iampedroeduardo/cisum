@@ -489,17 +489,11 @@ async function pegaCodigoSpotify(){
     console.log(artistasjson);
     for(var i = 0; i<artistasjson.items.length; i++){
         console.log(i);
-        playlists.push(new Artista(artistasjson.items[i].id,artistasjson.items[i].name,artistasjson.items[i].images[0].url));
+        artistas.push(new Artista(artistasjson.items[i].id,artistasjson.items[i].name,artistasjson.items[i].images[0].url));
     }
     menu();
 }
-var artistas = [
-    new Artista("Taylor Swift"),
-    new Artista("Jão"),
-    new Artista("Cavetown"),
-    new Artista("Ariana Grande"),
-    new Artista("Reneé Rapp")
-];
+var artistas = [];
 var albuns = [
     new Album("Taylor Swift","Taylor Swift",["Tim McGraw","Picture To Burn","Teardrops On My Guitar","A Place In This World","Cold As You","The Outside","Tied Together With A Smile","Stay Beautiful","Should've Said No","Mary's Song (Oh My, My, My)","Our Song","I'm Only Me When I'm With You","Invisible","A Perfectly Good Heart"]),
     new Album("Fearless","Taylor Swift",["Fearless","Fifteen","Love Story","Hey Stephen","White Horse","You Belong With Me","Breathe","Tell Me Why","You're Not Sorry","The Way I Loved You","Forever And Always","The Best Day","Change","Jump Then Fall","Untouchable","Come In With The Rain","Superstar","The Other Side Of The Door","Today Was A Fairytale","You All Over Me","Mr. Perfectly Fine","We Were Happy","That's When","Don't You","Bye Bye Baby"]),
