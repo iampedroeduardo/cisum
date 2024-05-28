@@ -80,11 +80,10 @@ function ativaAlbum(id){
     }
 }
 class Playlist{
-    constructor(id,nome,foto,songs){
+    constructor(id,nome,foto){
         this.id = id
         this.nome = nome;
         this.foto = foto;
-        this.songs = songs;
         this.on = false;
     }
     table(){
@@ -251,11 +250,16 @@ function testaCondicoes(){
             tof = true;
         }
     }
+    for(var playlist of playlists){
+        if(playlist.on){
+            tof = true;
+        }
+    }
     if(!tof){
         var janela = document.createElement("div");
         janela.setAttribute("class","janela");
         janela.innerHTML = `
-        <p>Nenhum álbum foi selecionado!</p>
+        <p>Nenhum álbum ou playlist foi selecionado!</p>
         `;
         document.querySelector("main").appendChild(janela);
         setTimeout(()=>{
@@ -512,34 +516,35 @@ function mais(tipo){
 }
 function play(){
     if(testaCondicoes()){
-        songson = 0;
-        songsok = 0;
-        var main = document.querySelector("main");
-        main.innerHTML = "";
-        var div = document.createElement("div");
-        div.setAttribute("class","jogo");
-        var controle = document.createElement("div");
-        controle.setAttribute("class","controle");
-        controle.innerHTML = `
-        <input type="text" class="input" placeholder="Digite..." oninput="testa();" autofocus>
-        <button class="pausar" onclick="pausar();">Pausar</button>
-        <p class="pontuacao">0/0</p>
-        <p class="contador">00:00</p>
-        <button class="pausar" onclick="finish();">Desistir</button>
-        `;
-        div.appendChild(controle);
-        var tabelas = document.createElement("div");
-        tabelas.setAttribute("class","tabelas");
-        for(album of albuns){
-            if(album.on){
-                tabelas.appendChild(album.table());
-            }
-        }
-        div.appendChild(tabelas);
-        main.appendChild(div);
-        contaMusicas();
-        pontuacao();
-        comecaTempo();
+        pegaMusicas();
+        // songson = 0;
+        // songsok = 0;
+        // var main = document.querySelector("main");
+        // main.innerHTML = "";
+        // var div = document.createElement("div");
+        // div.setAttribute("class","jogo");
+        // var controle = document.createElement("div");
+        // controle.setAttribute("class","controle");
+        // controle.innerHTML = `
+        // <input type="text" class="input" placeholder="Digite..." oninput="testa();" autofocus>
+        // <button class="pausar" onclick="pausar();">Pausar</button>
+        // <p class="pontuacao">0/0</p>
+        // <p class="contador">00:00</p>
+        // <button class="pausar" onclick="finish();">Desistir</button>
+        // `;
+        // div.appendChild(controle);
+        // var tabelas = document.createElement("div");
+        // tabelas.setAttribute("class","tabelas");
+        // for(album of albuns){
+        //     if(album.on){
+        //         tabelas.appendChild(album.table());
+        //     }
+        // }
+        // div.appendChild(tabelas);
+        // main.appendChild(div);
+        // contaMusicas();
+        // pontuacao();
+        // comecaTempo();
     }
 }
 function procuraAlbum(id){
@@ -577,7 +582,7 @@ async function pegaCodigoSpotify(){
                 }
             })
             var playlist = await json.json();
-            playlists.push(new Playlist(playlist.id,playlist.name,playlist.images[0].url,[]));
+            playlists.push(new Playlist(playlist.id,playlist.name,playlist.images[0].url));
         }
         var json = await fetch("https://api.spotify.com/v1/me/albums?limit=50",{
             method:"GET",
@@ -634,6 +639,20 @@ async function pegaCodigoSpotify(){
     }
     menu();
 }
+async function pegaMusicas(){
+    for(var playlist of playlists){
+        if(playlist.on){
+            var json = await fetch("https://api.spotify.com/v1/playlists/"+playlist.id+"?fields=total",{
+                method:"GET",
+                headers:{
+                    Authorization:"Bearer "+token
+                }
+            })
+            var n = await json.json();
+            console.log(n,playlist);
+        }
+    }
+}
 function carregando(){
     var div = document.createElement("div");
     div.setAttribute("class","carregando");
@@ -645,6 +664,7 @@ function carregando(){
 var artistas = [];
 var albuns = [];
 var playlists = [];
+var musicas = [];
 var dificuldades = [
     new Dificuldade("Fácil",false), 
     new Dificuldade("Médio",true), 
