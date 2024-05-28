@@ -22,12 +22,12 @@ class Song{
     }
 }
 class Album{
-    constructor(id,nome,artista,foto,songs){
+    constructor(id,nome,artista,foto,save){
         this.id = id;
         this.nome = nome;
         this.artista = artista;
         this.foto = foto;
-        this.songs = songs;
+        this.save = save;
         this.on = false;
     }
     table(){
@@ -376,7 +376,7 @@ function menu(){
     var p = document.createElement("div");
     p.setAttribute("class","titulo");
     p.innerHTML = `
-    <p>Artistas:</p>
+    <p>Artistas</p>
     <button class="mais" onclick="mais('artista')">+</button>
     `;
     div.appendChild(p);
@@ -391,7 +391,7 @@ function menu(){
     var p = document.createElement("div");
     p.setAttribute("class","titulo");
     p.innerHTML = `
-    <p>Álbuns:</p>
+    <p>Álbuns</p>
     <button class="mais" onclick="mais('album')">+</button>
     `;
     div.appendChild(p);
@@ -406,7 +406,7 @@ function menu(){
     var p = document.createElement("div");
     p.setAttribute("class","titulo");
     p.innerHTML = `
-    <p>Playlists:</p>
+    <p>Playlists</p>
     <button class="mais" onclick="mais('playlist')">+</button>
     `;
     div.appendChild(p);
@@ -422,7 +422,7 @@ function menu(){
     divdif.setAttribute("class","dificuldades");
     var p = document.createElement("p");
     p.setAttribute("class","titulop");
-    p.innerHTML = "Dificuldade:";
+    p.innerHTML = "Dificuldade";
     div.appendChild(p);
     for(var dificuldade of dificuldades){
         divdif.appendChild(dificuldade.opcao());
@@ -436,6 +436,30 @@ function menu(){
     button.innerHTML = "Jogar";
     divjogar.appendChild(button);
     div.appendChild(divjogar);
+    main.appendChild(div);
+}
+function mais(tipo){
+    var main = document.querySelector("main");
+    main.innerHTML = "";
+    var div = document.createElement("div");
+    div.setAttribute("class","maisjanela");
+    if(tipo == "artista"){
+        var p = document.createElement("p");
+        p.setAttribute("class","ptitulo");
+        p.innerHTML = "Seus Artistas Favoritos";
+        var espaco = document.createElement("div");
+        espaco.setAttribute("class","espaco");
+        for(var artista of artistas){
+            espaco.appendChild(artista.opcao);
+        }
+        div.appendChild(p);
+        div.appendChild(espaco);
+    }
+    var botao = document.createElement("button");
+    botao.setAttribute("class","ok");
+    botao.setAttribute("onclick","menu()");
+    botao.innerHTML = "Ok"
+    div.appendChild(botao);
     main.appendChild(div);
 }
 function play(){
@@ -507,6 +531,25 @@ async function pegaCodigoSpotify(){
             var playlist = await json.json();
             playlists.push(new Playlist(playlist.id,playlist.name,playlist.images[0].url,[]));
         }
+        var json = await fetch("https://api.spotify.com/v1/me/albums?limit=50",{
+            method:"GET",
+            headers:{
+                Authorization:"Bearer "+token
+            }
+        })
+        var albunsjson = await json.json();
+        for(var i = 0; i<albunsjson.items.length; i++){
+            var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[i].album.id,{
+                method:"GET",
+                headers:{
+                    Authorization:"Bearer "+token
+                }
+            })
+            var album = await json.json();
+            if(procuraAlbum(album.id)){
+                albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,true));
+            }
+        }
         var json = await fetch("https://api.spotify.com/v1/me/following?type=artist&limit=50",{
             method:"GET",
             headers:{
@@ -532,26 +575,9 @@ async function pegaCodigoSpotify(){
                     }
                 })
                 var album = await json.json();
-                albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,[]));
-            }
-        }
-        var json = await fetch("https://api.spotify.com/v1/me/albums?limit=50",{
-            method:"GET",
-            headers:{
-                Authorization:"Bearer "+token
-            }
-        })
-        var albunsjson = await json.json();
-        for(var i = 0; i<albunsjson.items.length; i++){
-            var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[i].album.id,{
-                method:"GET",
-                headers:{
-                    Authorization:"Bearer "+token
+                if(procuraAlbum(album.id)){
+                    albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,false));
                 }
-            })
-            var album = await json.json();
-            if(procuraAlbum(album.id)){
-                albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,[]));
             }
         }
     }catch(error){
@@ -571,7 +597,6 @@ function carregando(){
 var artistas = [];
 var albuns = [];
 var playlists = [];
-
 var dificuldades = [
     new Dificuldade("Fácil",false), 
     new Dificuldade("Médio",true), 
