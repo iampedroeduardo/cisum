@@ -28,7 +28,7 @@ class Album{
         this.artista = artista;
         this.foto = foto;
         this.songs = songs;
-        this.on = true;
+        this.on = false;
     }
     table(){
         var div = document.createElement("div");
@@ -82,7 +82,7 @@ class Playlist{
         this.nome = nome;
         this.foto = foto;
         this.songs = songs;
-        this.on = true
+        this.on = false;
     }
     table(){
         var div = document.createElement("div");
@@ -135,7 +135,7 @@ class Artista{
         this.id = id;
         this.nome = nome;
         this.foto = foto;
-        this.on = true;
+        this.on = false
     }
     opcao(){
         this.element = document.createElement("div");
@@ -370,43 +370,58 @@ function menu(){
     var div = document.createElement("div");
     div.setAttribute("class","menu");
     var p = document.createElement("p");
-    p.setAttribute("class","titulo");
+    p.setAttribute("class","titulop");
     p.innerHTML = "Olá "+perfil.display_name+"!";
     div.appendChild(p);
-    var p = document.createElement("p");
+    var p = document.createElement("div");
     p.setAttribute("class","titulo");
-    p.innerHTML = "Artistas:";
+    p.innerHTML = `
+    <p>Artistas:</p>
+    <button class="mais" onclick="mais('artista')">+</button>
+    `;
     div.appendChild(p);
     divart = document.createElement("div");
     divart.setAttribute("class","artistas");
     for(var artista of artistas){
-        divart.appendChild(artista.opcao());
+        if(artista.on){
+            divart.appendChild(artista.opcao());
+        }
     }
     div.appendChild(divart);
-    var p = document.createElement("p");
+    var p = document.createElement("div");
     p.setAttribute("class","titulo");
-    p.innerHTML = "Álbuns:";
+    p.innerHTML = `
+    <p>Álbuns:</p>
+    <button class="mais" onclick="mais('album')">+</button>
+    `;
     div.appendChild(p);
     divalb = document.createElement("div");
     divalb.setAttribute("class","albuns");
     for(var album of albuns){
-        divalb.appendChild(album.opcao());
+        if(album.on){
+            divalb.appendChild(album.opcao());
+        }
     }
     div.appendChild(divalb);
-    var p = document.createElement("p");
+    var p = document.createElement("div");
     p.setAttribute("class","titulo");
-    p.innerHTML = "Playlists:";
+    p.innerHTML = `
+    <p>Playlists:</p>
+    <button class="mais" onclick="mais('playlist')">+</button>
+    `;
     div.appendChild(p);
     divalb = document.createElement("div");
     divalb.setAttribute("class","albuns");
     for(var playlist of playlists){
-        divalb.appendChild(playlist.opcao());
+        if(playlist.on){
+            divalb.appendChild(playlist.opcao());
+        }
     }
     div.appendChild(divalb);
     var divdif = document.createElement("div");
     divdif.setAttribute("class","dificuldades");
     var p = document.createElement("p");
-    p.setAttribute("class","titulo");
+    p.setAttribute("class","titulop");
     p.innerHTML = "Dificuldade:";
     div.appendChild(p);
     for(var dificuldade of dificuldades){
