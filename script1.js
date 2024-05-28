@@ -505,7 +505,7 @@ async function pegaCodigoSpotify(){
     console.log(albunsjson);
     for(var i = 0; i<albunsjson.items.length; i++){
         console.log(i);
-        var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[i].id,{
+        var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[i].album.id,{
             method:"GET",
             headers:{
                 Authorization:"Bearer "+token
