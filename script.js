@@ -642,7 +642,7 @@ async function pegaCodigoSpotify(){
 async function pegaMusicas(){
     for(var playlist of playlists){
         if(playlist.on){
-            var json = await fetch("https://api.spotify.com/v1/playlists/"+playlist.id+"?fields=total",{
+            var json = await fetch("https://api.spotify.com/v1/playlists/"+playlist.id,{
                 method:"GET",
                 headers:{
                     Authorization:"Bearer "+token
