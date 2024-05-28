@@ -458,7 +458,7 @@ function play(){
 function procuraAlbum(id){
     var tof = true;
     for(var j=0;j<albuns.length;j++){
-        if(albuns[j].id = id){
+        if(albuns[j].id == id){
             tof = false;
             break;
         }   
