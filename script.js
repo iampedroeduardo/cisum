@@ -575,7 +575,6 @@ async function pegaCodigoSpotify(){
         })
         var playlistsjson = await json.json();
         playlistsjson = playlistsjson.items;
-        console.log(playlistsjson);
         for(var playlist of playlistsjson){
             playlists.push(new Playlist(playlist.id,playlist.name,playlist.images[0].url));
         }
@@ -587,7 +586,6 @@ async function pegaCodigoSpotify(){
         })
         var albunsjson = await json.json();
         albunsjson = albunsjson.items
-        console.log(albunsjson);
         for(var album of albunsjson){
             album = album.album;
             if(procuraAlbum(album.id)){
@@ -602,6 +600,7 @@ async function pegaCodigoSpotify(){
         })
         var artistasjson = await json.json();
         artistasjson = artistasjson.artists;
+        console.log(artistasjson);
         for(var i = 0; i<artistasjson.items.length; i++){
             artistas.push(new Artista(artistasjson.items[i].id,artistasjson.items[i].name,artistasjson.items[i].images[0].url));
             var json = await fetch("https://api.spotify.com/v1/artists/"+artistas[i].id+"/albums?include_groups=album&limit=50",{
