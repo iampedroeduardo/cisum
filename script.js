@@ -470,16 +470,17 @@ async function pegaCodigoSpotify(){
     })
     playlists = await json.json();
     console.log(playlists);
-    // for(var i = 0; i<playlists.items.length; i++){
-    //     var json = await fetch("https://api.spotify.com/v1/playlists/"+playlists.items[i].id,{
-    //         method:"GET",
-    //         headers:{
-    //             Authorization:"Bearer "+token
-    //         }
-    //     })
-    //     playlist = await json.json();
-    //     console.log(playlist);
-    // }
+    for(var i = 0; i<playlists.items.length; i++){
+        console.log(i);
+        var json = await fetch("https://api.spotify.com/v1/playlists/"+playlists.items[i].id,{
+            method:"GET",
+            headers:{
+                Authorization:"Bearer "+token
+            }
+        })
+        playlist = await json.json();
+        console.log(playlist);
+    }
     menu();
 }
 var artistas = [
