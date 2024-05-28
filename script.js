@@ -48,10 +48,10 @@ class Album{
         this.element = document.createElement("div");
         this.element.setAttribute("onclick",`ativaAlbum("${this.id}")`);
         if(this.on){
-            this.element.setAttribute("class","album on");
+            this.element.setAttribute("class","artista on");
         }
         else{
-            this.element.setAttribute("class","album off");
+            this.element.setAttribute("class","artista off");
         }
         this.element.innerHTML = `
         <img src="${this.foto}" alt="${this.nome}">
@@ -65,10 +65,10 @@ class Album{
             menu();
         }
         if(this.on){
-            this.element.setAttribute("class","album on");
+            this.element.setAttribute("class","artista on");
         }
         else{
-            this.element.setAttribute("class","album off");
+            this.element.setAttribute("class","artista off");
         }
     }
 }
@@ -105,10 +105,10 @@ class Playlist{
         this.element = document.createElement("div");
         this.element.setAttribute("onclick",`ativaPlaylist("${this.id}")`);
         if(this.on){
-            this.element.setAttribute("class","album on");
+            this.element.setAttribute("class","artista on");
         }
         else{
-            this.element.setAttribute("class","album off");
+            this.element.setAttribute("class","artista off");
         }
         this.element.innerHTML = `
         <img src="${this.foto}" alt="${this.nome}">
@@ -122,10 +122,10 @@ class Playlist{
             menu();
         }
         if(this.on){
-            this.element.setAttribute("class","album on");
+            this.element.setAttribute("class","artista on");
         }
         else{
-            this.element.setAttribute("class","album off");
+            this.element.setAttribute("class","artista off");
         }
     }
 }
