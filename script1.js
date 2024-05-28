@@ -165,7 +165,7 @@ class Artista{
     }
     reiniciaAlbuns(){
         for(var album of albuns){
-            if(album.artista == this.nome){
+            if(album.artista == this.id){
                 album.on = this.on;
                 for(var song of album.songs){
                     song.on = false;
@@ -482,9 +482,7 @@ async function pegaCodigoSpotify(){
             }
         })
         var playlistsjson = await json.json();
-        console.log(playlistsjson);
         for(var i = 0; i<playlistsjson.items.length; i++){
-            console.log(i);
             var json = await fetch("https://api.spotify.com/v1/playlists/"+playlistsjson.items[i].id,{
                 method:"GET",
                 headers:{
@@ -502,9 +500,7 @@ async function pegaCodigoSpotify(){
         })
         var artistasjson = await json.json();
         artistasjson = artistasjson.artists;
-        console.log(artistasjson);
         for(var i = 0; i<artistasjson.items.length; i++){
-            console.log(i);
             artistas.push(new Artista(artistasjson.items[i].id,artistasjson.items[i].name,artistasjson.items[i].images[0].url));
             var json = await fetch("https://api.spotify.com/v1/artists/"+artistas[i].id+"/albums?include_groups=album&limit=50",{
                 method:"GET",
@@ -521,10 +517,8 @@ async function pegaCodigoSpotify(){
                     }
                 })
                 var album = await json.json();
-                console.log(album);
                 albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,[]));
             }
-            console.log(albunsjson);
         }
         var json = await fetch("https://api.spotify.com/v1/me/albums?limit=50",{
             method:"GET",
@@ -533,9 +527,7 @@ async function pegaCodigoSpotify(){
             }
         })
         var albunsjson = await json.json();
-        console.log(albunsjson);
         for(var i = 0; i<albunsjson.items.length; i++){
-            console.log(i);
             var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[i].album.id,{
                 method:"GET",
                 headers:{
@@ -543,7 +535,6 @@ async function pegaCodigoSpotify(){
                 }
             })
             var album = await json.json();
-            console.log(album);
             if(procuraAlbum(album.id)){
                 albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,[]));
             }
