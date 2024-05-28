@@ -438,8 +438,10 @@ function menu(){
 function mais(tipo){
     var main = document.querySelector("main");
     main.innerHTML = "";
+    var divpai = document.createElement("div");
+    divpai.setAttribute("class","maisjanela");
     var div = document.createElement("div");
-    div.setAttribute("class","maisjanela");
+    div.setAttribute("class","espacos");
     if(tipo == "artista"){
         var p = document.createElement("p");
         p.setAttribute("class","titulop");
@@ -503,6 +505,7 @@ function mais(tipo){
     button.setAttribute("class","botaojogar");
     button.setAttribute("onclick","menu()");
     button.innerHTML = "Ok";
+    divpai.appendChild(div);
     divok.appendChild(button);
     div.appendChild(divok);
     main.appendChild(div);

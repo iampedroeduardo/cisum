@@ -321,7 +321,13 @@ main{
     cursor: pointer;
     margin: auto;
 }
+.espacos{
+    max-height: 600px;
+}
 @media (max-width: 900px){
+    .espacos{
+        max-width: 85vh;
+    }
     .menu{
         width: 85vw;
     }
