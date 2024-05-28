@@ -75,6 +75,51 @@ class Album{
         }
     }
 }
+class Playlist{
+    constructor(nome,foto,songs){
+        this.nome = nome;
+        this.foto = foto;
+        this.songs = songs;
+    }
+    table(){
+        var div = document.createElement("div");
+        div.setAttribute("class","tabela");
+        var th = document.createElement("div");
+        th.setAttribute("class","th td");
+        th.innerHTML = `
+            <p>${this.nome}</p>
+        `;
+        div.appendChild(th)
+        for(var song of this.songs){
+            div.appendChild(song.table());
+        }        
+        return div;
+    }
+    opcao(){
+        this.element = document.createElement("div");
+        this.element.setAttribute("onclick","ativaAlbum('"+this.nome+"')");
+        if(this.on){
+            this.element.setAttribute("class","album on");
+        }
+        else{
+            this.element.setAttribute("class","album off");
+        }
+        this.element.innerHTML = `
+        <img src="${this.foto}" alt="${this.nome}">
+        <p class="nome">${this.nome}</p>
+        `;
+        return this.element;
+    }
+    ativa(){
+        this.on = !this.on;
+        if(this.on){
+            this.element.setAttribute("class","album on");
+        }
+        else{
+            this.element.setAttribute("class","album off");
+        }
+    }
+}
 function ativaAlbum(nome){
     for(var album of albuns){
         if(album.nome == nome){
@@ -417,13 +462,23 @@ async function pegaCodigoSpotify(){
         }
     })
     perfil = await json.json();
-    var json = await fetch("https://api.spotify.com/v1/playlists/6BWJVg8pV1t4zQJwl80xDO/tracks?limit=50",{
+    var json = await fetch("https://api.spotify.com/v1/me/playlists?limit=50",{
         method:"GET",
         headers:{
             Authorization:"Bearer "+token
         }
     })
     playlists = await json.json();
+    for(var i = 0; i<50; i++){
+        var json = await fetch("https://api.spotify.com/v1/playlists/"+playlists.items[i].id,{
+            method:"GET",
+            headers:{
+                Authorization:"Bearer "+token
+            }
+        })
+        playlist = await json.json();
+        console.log(playlist);
+    }
     menu();
 }
 var artistas = [
@@ -464,6 +519,8 @@ var albuns = [
     new Album("Everything To Everyone","Reneé Rapp",["Everything To Everyone (Intro)","In The Kitchen","Colorado","Don't Tell My Mom","What Can I Do","Too Well","Moon"]),
     new Album("Snow Angel","Reneé Rapp",["Talk Too Much","I Hate Boston","Poison Poison","Gemini Moon","Snow Angel","So What Now","The Wedding Song","Pretty Girls","Tummy Hurts","I Wish","Willow","23","Messy","I Do","Swim"])
 ];
+var playlists = [];
+
 var dificuldades = [
     new Dificuldade("Fácil",false), 
     new Dificuldade("Médio",true), 
