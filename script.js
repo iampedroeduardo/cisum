@@ -486,6 +486,7 @@ async function pegaCodigoSpotify(){
         }
     })
     var artistasjson = await json.json();
+    artistasjson = artistasjson.artists;
     console.log(artistasjson);
     for(var i = 0; i<artistasjson.items.length; i++){
         console.log(i);
