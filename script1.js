@@ -22,9 +22,10 @@ class Song{
     }
 }
 class Album{
-    constructor(id,nome,foto,songs){
+    constructor(id,nome,artista,foto,songs){
         this.id = id;
         this.nome = nome;
+        this.artista = artista;
         this.foto = foto;
         this.songs = songs;
         this.on = true;
@@ -455,67 +456,80 @@ function play(){
     }
 }
 async function pegaCodigoSpotify(){
-    token = document.location.hash.substring(document.location.hash.indexOf("access_token=")+13,document.location.hash.indexOf("&"));
-    var json = await fetch("https://api.spotify.com/v1/me",{
-        method:"GET",
-        headers:{
-            Authorization:"Bearer "+token
-        }
-    })
-    perfil = await json.json();
-    var json = await fetch("https://api.spotify.com/v1/me/playlists?limit=50",{
-        method:"GET",
-        headers:{
-            Authorization:"Bearer "+token
-        }
-    })
-    var playlistsjson = await json.json();
-    console.log(playlistsjson);
-    for(var i = 0; i<playlistsjson.items.length; i++){
-        console.log(i);
-        var json = await fetch("https://api.spotify.com/v1/playlists/"+playlistsjson.items[i].id,{
+    try {
+        token = document.location.hash.substring(document.location.hash.indexOf("access_token=")+13,document.location.hash.indexOf("&"));
+        var json = await fetch("https://api.spotify.com/v1/me",{
             method:"GET",
             headers:{
                 Authorization:"Bearer "+token
             }
         })
-        var playlist = await json.json();
-        playlists.push(new Playlist(playlist.id,playlist.name,playlist.images[0].url,[]));
-    }
-    var json = await fetch("https://api.spotify.com/v1/me/following?type=artist&limit=50",{
-        method:"GET",
-        headers:{
-            Authorization:"Bearer "+token
-        }
-    })
-    var artistasjson = await json.json();
-    artistasjson = artistasjson.artists;
-    console.log(artistasjson);
-    for(var i = 0; i<artistasjson.items.length; i++){
-        console.log(i);
-        artistas.push(new Artista(artistasjson.items[i].id,artistasjson.items[i].name,artistasjson.items[i].images[0].url));
-    }
-    var json = await fetch("https://api.spotify.com/v1/me/albums?limit=50",{
-        method:"GET",
-        headers:{
-            Authorization:"Bearer "+token
-        }
-    })
-    var albunsjson = await json.json();
-    console.log(albunsjson);
-    for(var i = 0; i<albunsjson.items.length; i++){
-        console.log(i);
-        var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[i].album.id,{
+        perfil = await json.json();
+        var json = await fetch("https://api.spotify.com/v1/me/playlists?limit=50",{
             method:"GET",
             headers:{
                 Authorization:"Bearer "+token
             }
         })
-        var album = await json.json();
-        console.log(album);
-        albuns.push(new Album(album.id,album.name,album.images[0].url,[]));
+        var playlistsjson = await json.json();
+        console.log(playlistsjson);
+        for(var i = 0; i<playlistsjson.items.length; i++){
+            console.log(i);
+            var json = await fetch("https://api.spotify.com/v1/playlists/"+playlistsjson.items[i].id,{
+                method:"GET",
+                headers:{
+                    Authorization:"Bearer "+token
+                }
+            })
+            var playlist = await json.json();
+            playlists.push(new Playlist(playlist.id,playlist.name,playlist.images[0].url,[]));
+        }
+        var json = await fetch("https://api.spotify.com/v1/me/following?type=artist&limit=50",{
+            method:"GET",
+            headers:{
+                Authorization:"Bearer "+token
+            }
+        })
+        var artistasjson = await json.json();
+        artistasjson = artistasjson.artists;
+        console.log(artistasjson);
+        for(var i = 0; i<artistasjson.items.length; i++){
+            console.log(i);
+            artistas.push(new Artista(artistasjson.items[i].id,artistasjson.items[i].name,artistasjson.items[i].images[0].url));
+        }
+        var json = await fetch("https://api.spotify.com/v1/me/albums?limit=50",{
+            method:"GET",
+            headers:{
+                Authorization:"Bearer "+token
+            }
+        })
+        var albunsjson = await json.json();
+        console.log(albunsjson);
+        for(var i = 0; i<albunsjson.items.length; i++){
+            console.log(i);
+            var json = await fetch("https://api.spotify.com/v1/albums/"+albunsjson.items[i].album.id,{
+                method:"GET",
+                headers:{
+                    Authorization:"Bearer "+token
+                }
+            })
+            var album = await json.json();
+            console.log(album);
+            albuns.push(new Album(album.id,album.name,album.artists[0].id,album.images[0].url,[]));
+        }
+    }catch(error){
+        var carregando = document.querySelector(".carregando p");
+        carregando.innerHTML = `Ocorreu um erro!`;
     }
     menu();
+}
+function carregando(){
+    var div = document.createElement("div");
+    div.setAttribute("class","carregando");
+    div.innerHTML = `
+        <p>Carregando...</p>
+    `;
+    document.querySelector("main").appendChild(div);
 }
 var artistas = [];
 var albuns = [];
@@ -527,4 +541,5 @@ var dificuldades = [
     new Dificuldade("Difícil",false)
 ];
 var songson = 0, songsok = 0, tempo, intervalo, token;
+carregando();
 pegaCodigoSpotify();
