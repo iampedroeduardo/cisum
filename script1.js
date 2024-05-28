@@ -512,6 +512,7 @@ async function pegaCodigoSpotify(){
             }
         })
         var album = await json.json();
+        console.log(album);
         albuns.push(new Album(album.id,album.name,album.images[0].url,[]));
     }
     menu();
