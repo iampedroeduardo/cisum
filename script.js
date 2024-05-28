@@ -417,7 +417,7 @@ async function pegaCodigoSpotify(){
         }
     })
     perfil = await json.json();
-    var json = await fetch("https://api.spotify.com/v1/me/playlists?limit=50",{
+    var json = await fetch("https://api.spotify.com/v1/playlists/6BWJVg8pV1t4zQJwl80xDO/tracks?limit=50",{
         method:"GET",
         headers:{
             Authorization:"Bearer "+token
