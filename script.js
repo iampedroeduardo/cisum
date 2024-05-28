@@ -222,10 +222,22 @@ function ativaDificuldade(nome){
     }
 }
 function simplificaNome(nome,espaco){
-    var nome = nome.toLowerCase().replaceAll(".", "").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a").replaceAll("/","").replaceAll("é","e");
+    var nome = tiraParenteses(nome).toLowerCase().replaceAll(".", "").replaceAll("&","and").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a").replaceAll("/","").replaceAll("é","e");
     if(espaco){
         nome = nome.replaceAll(" ", "");
     }
+    return nome;
+}
+function tiraParenteses(nome){
+    var posicao1 = nome.indexOf("(");
+    var posicao2 = nome.indexOf(")");
+    do{
+        if(posicao1 != -1 && posicao2 != -1){
+            nome = nome.substring(0,posicao1)+nome.substring(posicao2+1);
+        }
+        var posicao1 = nome.indexOf("(");
+        var posicao2 = nome.indexOf(")");
+    }while(posicao1 != -1 && posicao2 != -1)
     return nome;
 }
 function sigla(nome){
@@ -624,7 +636,6 @@ async function pegaCodigoSpotify(){
         })
         var artistasjson = await json.json();
         artistasjson = artistasjson.artists;
-        console.log(artistasjson);
         for(var i = 0; i<artistasjson.items.length; i++){
             artistas.push(new Artista(artistasjson.items[i].id,artistasjson.items[i].name,artistasjson.items[i].images[0].url));
             var json = await fetch("https://api.spotify.com/v1/artists/"+artistas[i].id+"/albums?include_groups=album&limit=50",{
@@ -669,7 +680,6 @@ async function pegaMusicas(){
                 var songs = json.items;
                 for(song of songs){
                     song = song.track;
-                    console.log(song);
                     if(procuraMusica(song.id)){
                         musicas.push(new Song(song.id,song.name,song.artists[0].id));
                     }
@@ -677,6 +687,18 @@ async function pegaMusicas(){
                 }
                 
             }
+        }
+    }
+    for(var album of albuns){
+        if(album.on){
+            var json = await fetch("https://api.spotify.com/v1/albums/"+album.id+"/tracks",{
+                method:"GET",
+                headers:{
+                    Authorization:"Bearer "+token
+                }
+            })
+            var n = await json.json();
+            console.log(n);
         }
     }
 }
