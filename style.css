@@ -53,6 +53,7 @@ main{
     display: flex;
     justify-content: space-between;
     font-size: 35px;
+    align-items: center;
 }
 .titulop{
     font-size: 35px;
@@ -290,9 +291,9 @@ main{
     background-color: rgba(255, 255, 255, 0.082);
     border: 1px solid #81b71a;
     color: white;
-    font-size: 20px;
-    width: 25px;
-    height: 25px;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
     border-radius: 25%;
     display: flex;
     align-items: center;
