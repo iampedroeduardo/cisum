@@ -708,8 +708,10 @@ async function pegaMusicas(){
             }
         }
     }
+    menu();
 }
 function carregando(){
+    document.querySelector("main").innerHTML = "";
     var div = document.createElement("div");
     div.setAttribute("class","carregando");
     div.innerHTML = `
