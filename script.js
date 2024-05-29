@@ -679,11 +679,13 @@ async function pegaMusicas(){
                 for(song of songs){
                     console.log(song);
                     song = song.track;
-                    if(procuraMusica(song.id)){
-                        musicas.push(new Song(song.id,song.name,song.artists[0].id));
+                    if(song != null){
+                        if(procuraMusica(song.id)){
+                            musicas.push(new Song(song.id,song.name,song.artists[0].id));
+                        }
+                        playlist.songs.push(musicas[achaMusica(song.id)]);
+                        console.log("colocando musica "+song.name+" na playlist");
                     }
-                    playlist.songs.push(musicas[achaMusica(song.id)]);
-                    console.log("colocando musica "+song.name+" na playlist")
                 }
                 
             }
