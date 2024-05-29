@@ -704,7 +704,7 @@ async function pegaMusicas(){
                 if(procuraMusica(song.id)){
                     musicas.push(new Song(song.id,song.name,song.artists[0].id));
                 }
-                playlist.songs.push(musicas[achaMusica(song.id)]);
+                album.songs.push(musicas[achaMusica(song.id)]);
             }
         }
     }
