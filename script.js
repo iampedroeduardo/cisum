@@ -360,17 +360,21 @@ function finish(){
 }
 function testa(){
     var input = document.querySelector(".input");
+    var tof = false;
     for(var musica of musicas){
         if((musica.simpleName == simplificaNome(input.value,true) || (!dificuldades[2].on && musica.sigla == simplificaNome(input.value,true))) && !musica.on){
             console.log(musica);
             musica.ativa("white");
             songsok++;
             pontuacao();
-            input.value = "";
+            tof = true;
             if(songsok == songson){
                 finish();
             }
         }
+    }
+    if(tof){
+        input.value = "";
     }
 }
 function menu(){
