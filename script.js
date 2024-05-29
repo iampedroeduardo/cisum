@@ -241,7 +241,6 @@ function tiraParenteses(nome){
     return nome;
 }
 function sigla(nome){
-    console.log(nome);
     var posicao = nome.indexOf(" ");
     var nome2 = nome.substring(posicao+1);
     posicao = nome2.indexOf(" ");
@@ -658,6 +657,7 @@ async function pegaCodigoSpotify(){
 async function pegaMusicas(){
     for(var playlist of playlists){
         if(playlist.on){
+            console.log("achou playlist"+playlist.nome);
             var json = await fetch("https://api.spotify.com/v1/playlists/"+playlist.id+"/tracks?fields=total",{
                 method:"GET",
                 headers:{
@@ -667,6 +667,7 @@ async function pegaMusicas(){
             var n = await json.json();
             n = Math.round(n.total/50);
             for(var i = 0; i < n; i++){
+                console.log("rodando fetch");
                 var json = await fetch("https://api.spotify.com/v1/playlists/"+playlist.id+"/tracks?limit=50&offset="+i*50,{
                     method:"GET",
                     headers:{
@@ -677,11 +678,11 @@ async function pegaMusicas(){
                 var songs = json.items;
                 for(song of songs){
                     song = song.track;
-                    console.log(song);
                     if(procuraMusica(song.id)){
                         musicas.push(new Song(song.id,song.name,song.artists[0].id));
                     }
                     playlist.songs.push(musicas[achaMusica(song.id)]);
+                    console.log("colocando musica "+song.name+" na playlist")
                 }
                 
             }
