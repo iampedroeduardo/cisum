@@ -361,15 +361,16 @@ function finish(){
 function testa(){
     var input = document.querySelector(".input");
     for(var musica of musicas){
-                if((musica.simpleName == simplificaNome(input.value,true) || (!dificuldades[2].on && musica.sigla == simplificaNome(input.value,true))) && !musica.on){
-                    musica.ativa("white");
-                    songsok++;
-                    pontuacao();
-                    input.value = "";
-                    if(songsok == songson){
-                        finish();
-                    }
-                }
+        if((musica.simpleName == simplificaNome(input.value,true) || (!dificuldades[2].on && musica.sigla == simplificaNome(input.value,true))) && !musica.on){
+            console.log(musica);
+            musica.ativa("white");
+            songsok++;
+            pontuacao();
+            input.value = "";
+            if(songsok == songson){
+                finish();
+            }
+        }
     }
 }
 function menu(){
