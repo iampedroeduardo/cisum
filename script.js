@@ -222,7 +222,7 @@ function ativaDificuldade(nome){
     }
 }
 function simplificaNome(nome,espaco){
-    var nome = tiraParenteses(nome).toLowerCase().replaceAll(".", "").replaceAll("&","and").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a").replaceAll("/","").replaceAll("é","e");
+    var nome = tiraParenteses(nome).toLowerCase().replaceAll(".", "").replaceAll("&","and").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a").replaceAll("/","").replaceAll("é","e").trim();
     if(espaco){
         nome = nome.replaceAll(" ", "");
     }
@@ -241,6 +241,7 @@ function tiraParenteses(nome){
     return nome;
 }
 function sigla(nome){
+    console.log(nome);
     var posicao = nome.indexOf(" ");
     var nome2 = nome.substring(posicao+1);
     posicao = nome2.indexOf(" ");
