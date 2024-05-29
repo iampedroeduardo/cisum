@@ -285,13 +285,6 @@ function testaCondicoes(){
     }
     return tof;
 }
-function contaMusicas(){
-    for(var album of albuns){
-        if(album.on){
-            songson += album.songs.length;
-        }
-    }
-}
 function pontuacao(){
     var p = document.querySelector(".pontuacao");
     p.innerHTML = `${songsok}/${songson}`;
@@ -533,36 +526,39 @@ function mais(tipo){
 }
 function play(){
     if(testaCondicoes()){
-        carregando();
-        pegaMusicas();
-        // songson = 0;
-        // songsok = 0;
-        // var main = document.querySelector("main");
-        // main.innerHTML = "";
-        // var div = document.createElement("div");
-        // div.setAttribute("class","jogo");
-        // var controle = document.createElement("div");
-        // controle.setAttribute("class","controle");
-        // controle.innerHTML = `
-        // <input type="text" class="input" placeholder="Digite..." oninput="testa();" autofocus>
-        // <button class="pausar" onclick="pausar();">Pausar</button>
-        // <p class="pontuacao">0/0</p>
-        // <p class="contador">00:00</p>
-        // <button class="pausar" onclick="finish();">Desistir</button>
-        // `;
-        // div.appendChild(controle);
-        // var tabelas = document.createElement("div");
-        // tabelas.setAttribute("class","tabelas");
-        // for(album of albuns){
-        //     if(album.on){
-        //         tabelas.appendChild(album.table());
-        //     }
-        // }
-        // div.appendChild(tabelas);
-        // main.appendChild(div);
-        // contaMusicas();
-        // pontuacao();
-        // comecaTempo();
+        songson = musicas.length;
+        songsok = 0;
+        var main = document.querySelector("main");
+        main.innerHTML = "";
+        var div = document.createElement("div");
+        div.setAttribute("class","jogo");
+        var controle = document.createElement("div");
+        controle.setAttribute("class","controle");
+        controle.innerHTML = `
+        <input type="text" class="input" placeholder="Digite..." oninput="testa();" autofocus>
+        <button class="pausar" onclick="pausar();">Pausar</button>
+        <p class="pontuacao">0/0</p>
+        <p class="contador">00:00</p>
+        <button class="pausar" onclick="finish();">Desistir</button>
+        `;
+        div.appendChild(controle);
+        var tabelas = document.createElement("div");
+        tabelas.setAttribute("class","tabelas");
+        for(var album of albuns){
+            if(album.on){
+                tabelas.appendChild(album.table());
+            }
+        }
+        for(var playlist of playlists){
+            if(playlist.on){
+                tabelas.appendChild(playlist.table());
+            }
+        }
+        div.appendChild(tabelas);
+        main.appendChild(div);
+        contaMusicas();
+        pontuacao();
+        comecaTempo();
     }
 }
 function procuraAlbum(id){
