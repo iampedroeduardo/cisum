@@ -677,6 +677,7 @@ async function pegaMusicas(){
                 json = await json.json();
                 var songs = json.items;
                 for(song of songs){
+                    console.log(song);
                     song = song.track;
                     if(procuraMusica(song.id)){
                         musicas.push(new Song(song.id,song.name,song.artists[0].id));
