@@ -345,33 +345,31 @@ function finish(){
     document.querySelectorAll(".pausar")[0].setAttribute("onclick","play()");
     document.querySelectorAll(".pausar")[1].setAttribute("onclick","menu()");
     document.querySelector(".contador").style.color = "#81b71a";
-    for(var album of albuns){
-        if(album.on){
-            for(song of album.songs){
-                if(!song.on){
-                    song.ativa("black");
-                }
-            }
+    for(var musica of musicas){
+        if(!musica.on){
+            musica.ativa("black");
         }
+    }
+    musicas = [];
+    for(var playlist of playlists){
+        playlist.songs = [];
+    }
+    for(var album of albuns){
+        album.songs = [];
     }
 }
 function testa(){
     var input = document.querySelector(".input");
-    for(var album of albuns){
-        if(album.on){
-            for(song of album.songs){
-                if((song.simpleName == simplificaNome(input.value,true) || (!dificuldades[2].on && song.sigla == simplificaNome(input.value,true))) && !song.on){
-                    song.ativa("white");
+    for(var musica of musicas){
+                if((musica.simpleName == simplificaNome(input.value,true) || (!dificuldades[2].on && musica.sigla == simplificaNome(input.value,true))) && !musica.on){
+                    musica.ativa("white");
                     songsok++;
                     pontuacao();
                     input.value = "";
                     if(songsok == songson){
                         finish();
                     }
-                    break;
                 }
-            }
-        }
     }
 }
 function menu(){
