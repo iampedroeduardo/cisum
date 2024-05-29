@@ -702,10 +702,12 @@ async function pegaMusicas(){
             var n = await json.json();
             var songs = n.items;
             for(var song of songs){
-                if(procuraMusica(song.id)){
-                    musicas.push(new Song(song.id,song.name,song.artists[0].id));
+                if(song != null){
+                    if(procuraMusica(song.id)){
+                        musicas.push(new Song(song.id,song.name,song.artists[0].id));
+                    }
+                    album.songs.push(musicas[achaMusica(song.id)]);
                 }
-                album.songs.push(musicas[achaMusica(song.id)]);
             }
         }
     }
