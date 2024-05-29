@@ -675,6 +675,7 @@ async function pegaMusicas(){
                     }
                 })
                 json = await json.json();
+                console.log(json);
                 var songs = json.items;
                 for(song of songs){
                     console.log(song);
