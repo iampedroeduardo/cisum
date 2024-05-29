@@ -533,6 +533,7 @@ function mais(tipo){
 }
 function play(){
     if(testaCondicoes()){
+        carregando();
         pegaMusicas();
         // songson = 0;
         // songsok = 0;
