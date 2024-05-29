@@ -691,14 +691,20 @@ async function pegaMusicas(){
     }
     for(var album of albuns){
         if(album.on){
-            var json = await fetch("https://api.spotify.com/v1/albums/"+album.id+"/tracks",{
+            var json = await fetch("https://api.spotify.com/v1/albums/"+album.id+"/tracks?limit=50",{
                 method:"GET",
                 headers:{
                     Authorization:"Bearer "+token
                 }
             })
             var n = await json.json();
-            console.log(n);
+            var songs = n.items;
+            for(var song of songs){
+                if(procuraMusica(song.id)){
+                    musicas.push(new Song(song.id,song.name,song.artists[0].id));
+                }
+                playlist.songs.push(musicas[achaMusica(song.id)]);
+            }
         }
     }
 }
