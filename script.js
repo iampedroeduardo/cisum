@@ -665,7 +665,7 @@ async function pegaMusicas(){
                 }
             })
             var n = await json.json();
-            n = Math.round(n.total/50);
+            n = Math.ceil(n.total/50);
             for(var i = 0; i < n; i++){
                 console.log("rodando fetch");
                 var json = await fetch("https://api.spotify.com/v1/playlists/"+playlist.id+"/tracks?limit=50&offset="+i*50,{
