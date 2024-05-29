@@ -443,7 +443,7 @@ function menu(){
     divjogar.setAttribute("class","jogar");
     button = document.createElement("button");
     button.setAttribute("class","botaojogar");
-    button.setAttribute("onclick","play()");
+    button.setAttribute("onclick","carregando();pegaMusicas();");
     button.innerHTML = "Jogar";
     divjogar.appendChild(button);
     div.appendChild(divjogar);
@@ -705,7 +705,7 @@ async function pegaMusicas(){
             }
         }
     }
-    menu();
+    play();
 }
 function carregando(){
     document.querySelector("main").innerHTML = "";
