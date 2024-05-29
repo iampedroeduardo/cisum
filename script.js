@@ -556,7 +556,6 @@ function play(){
         }
         div.appendChild(tabelas);
         main.appendChild(div);
-        contaMusicas();
         pontuacao();
         comecaTempo();
     }
