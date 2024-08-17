@@ -222,7 +222,7 @@ function ativaDificuldade(nome){
     }
 }
 function simplificaNome(nome,espaco){
-    var nome = tiraParenteses(nome).toLowerCase().replaceAll(".", "").replaceAll("&","and").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a").replaceAll("/","").replaceAll("é","e").trim();
+    var nome = tiraParenteses(nome).toLowerCase().replaceAll(".", "").replaceAll("&","and").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a").replaceAll("/","").replaceAll("é","e").replaceAll("`","").trim();
     if(espaco){
         nome = nome.replaceAll(" ", "");
     }
