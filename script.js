@@ -222,7 +222,7 @@ function ativaDificuldade(nome){
     }
 }
 function simplificaNome(nome,espaco){
-    var nome = tiraParenteses(nome).toLowerCase().replaceAll(".", "").replaceAll("&","and").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a").replaceAll("/","").replaceAll("é","e").replaceAll("`","").trim();
+    var nome = simplifica(tiraParenteses(nome).toLowerCase().replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a").replaceAll("é","e").trim());
     if(espaco){
         nome = nome.replaceAll(" ", "");
     }
@@ -238,6 +238,15 @@ function tiraParenteses(nome){
         var posicao1 = nome.indexOf("(");
         var posicao2 = nome.indexOf(")");
     }while(posicao1 != -1 && posicao2 != -1)
+    return nome;
+}
+function simplifica(nome){
+    alfabeto = "abcdefghijklmnopqrstuvwxyz ".split("");
+    for(var i = 0; i < nome.length; i++){
+        if(!alfabeto.includes(nome[i])){
+            nome = nome.replaceAll(nome[i],"");
+        }
+    }
     return nome;
 }
 function sigla(nome){
